@@ -36,7 +36,7 @@ export default function Contact() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <Link href="/" className="logo">✨ Celestial Guidance</Link>
+          <Link href="/" className="logo">🌟 Sri Arunachaleswara Astrology</Link>
           <ul className="nav-links">
             <li><Link href="/#services">Services</Link></li>
             <li><Link href="/#about">About</Link></li>
@@ -49,27 +49,41 @@ export default function Contact() {
       {/* Contact Section */}
       <section className="contact-page">
         <div className="contact-container">
-          <h1>Get in Touch</h1>
-          <p>Have questions? Want to book a reading? We'd love to hear from you!</p>
+          <h1>Get in Touch with M. Parthasarathy</h1>
+          <p>Have questions about astrology services? Want to book a consultation? We'd love to help!</p>
 
           <div className="contact-content">
             <div className="contact-info">
               <h2>Contact Information</h2>
               <div className="info-item">
-                <h3>📧 Email</h3>
-                <p>contact@celestialguidance.com</p>
-              </div>
-              <div className="info-item">
                 <h3>📱 Phone</h3>
-                <p>+1 (555) 123-4567</p>
+                <p><a href="tel:+919367780030">+91 93677 80030</a></p>
+                <p style={{fontSize: '0.9rem', color: '#888'}}>Available on Call & WhatsApp</p>
               </div>
               <div className="info-item">
-                <h3>📍 Location</h3>
-                <p>123 Cosmic Lane<br />Astral City, AC 12345<br />United States</p>
+                <h3>📧 Email</h3>
+                <p><a href="mailto:sarathymanickam@gmail.com">sarathymanickam@gmail.com</a></p>
               </div>
               <div className="info-item">
-                <h3>⏰ Business Hours</h3>
-                <p>Monday - Friday: 10 AM - 6 PM<br />Saturday: 12 PM - 4 PM<br />Sunday: By Appointment</p>
+                <h3>📍 Address</h3>
+                <p>Sri Arunachaleswara Astrology & Research Centre<br />
+                24/10, Thiruvavaduthurai Madathu Street<br />
+                Vaitheeswaran Koil - 609117<br />
+                Mayiladuthurai District<br />
+                Tamil Nadu, South India</p>
+              </div>
+              <div className="info-item">
+                <h3>⏰ Consultation Hours</h3>
+                <p>Monday - Friday: 9 AM - 6 PM<br />
+                Saturday: 10 AM - 4 PM<br />
+                Sunday: By Appointment Only</p>
+              </div>
+              <div className="info-item quick-contact">
+                <h3>Quick Links</h3>
+                <div className="quick-links">
+                  <a href="https://wa.me/919367780030" target="_blank" rel="noopener noreferrer" className="btn-whatsapp">💬 WhatsApp</a>
+                  <a href="tel:+919367780030" className="btn-call">☎️ Call Now</a>
+                </div>
               </div>
             </div>
 
@@ -99,13 +113,15 @@ export default function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="phone">Phone</label>
+                <label htmlFor="phone">Phone *</label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  placeholder="+91"
+                  required
                 />
               </div>
 
@@ -119,12 +135,13 @@ export default function Contact() {
                   required
                 >
                   <option value="">Select a service</option>
+                  <option value="career">Career & Business Guidance</option>
+                  <option value="holistic">Holistic Wellness</option>
+                  <option value="vastu">Vastu Consultation</option>
+                  <option value="nadi">Nadi Reading</option>
+                  <option value="jamakkol">Jamakkol Prasanam (Palmistry)</option>
                   <option value="birth-chart">Birth Chart Analysis</option>
                   <option value="horoscope">Personalized Horoscope</option>
-                  <option value="compatibility">Relationship Compatibility</option>
-                  <option value="career">Career Guidance</option>
-                  <option value="transit">Transit Predictions</option>
-                  <option value="remedial">Remedial Measures</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -136,13 +153,14 @@ export default function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  placeholder="Tell us about your inquiry..."
                   rows="6"
                   required
                 ></textarea>
               </div>
 
               <button type="submit" className="submit-btn">Send Message</button>
-              {submitted && <p className="success-message">Thank you! Your message has been sent successfully.</p>}
+              {submitted && <p className="success-message">✓ Thank you! Your message has been sent. We'll contact you soon.</p>}
             </form>
           </div>
         </div>
@@ -150,11 +168,15 @@ export default function Contact() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; 2024 Celestial Guidance. All rights reserved.</p>
+        <p>&copy; 2024 Sri Arunachaleswara Astrology & Research Centre. All rights reserved.</p>
+        <div className="contact-footer">
+          <p>📱 +91 93677 80030 | 📧 sarathymanickam@gmail.com</p>
+          <p>📍 24/10, Thiruvavaduthurai Madathu Street, Vaitheeswaran Koil - 609117, Tamil Nadu, India</p>
+        </div>
         <div className="social-links">
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="#">Twitter</a>
+          <a href="https://wa.me/919367780030" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="tel:+919367780030">Call Us</a>
+          <a href="mailto:sarathymanickam@gmail.com">Email</a>
         </div>
       </footer>
     </>

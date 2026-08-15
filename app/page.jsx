@@ -17,7 +17,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">✨ Celestial Guidance</div>
+          <div className="logo">🌟 Sri Arunachaleswara Astrology</div>
           <ul className="nav-links">
             <li><Link href="#services">Services</Link></li>
             <li><Link href="#about">About</Link></li>
@@ -30,8 +30,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1>Welcome to Your Cosmic Journey</h1>
-          <p>Unlock the mysteries of the universe and discover your true path</p>
+          <h1>Sri Arunachaleswara Astrology & Research Centre</h1>
+          <p className="astrologer-name">M. Parthasarathy</p>
+          <p className="credentials">M.A., B.Ed.</p>
+          <p>Discover your cosmic journey with expert Vedic & Western Astrology</p>
           <Link href="/contact" className="cta-button">Book a Reading</Link>
         </div>
         <div className="hero-background"></div>
@@ -42,34 +44,34 @@ export default function Home() {
         <h2>Our Services</h2>
         <div className="services-grid">
           <div className="service-card">
-            <div className="service-icon">🌙</div>
-            <h3>Birth Chart Analysis</h3>
-            <p>Discover your cosmic blueprint and life purpose through detailed natal chart interpretation.</p>
+            <div className="service-icon">💼</div>
+            <h3>Career & Business</h3>
+            <p>Strategic guidance for career advancement and business success through astrological insights.</p>
           </div>
           <div className="service-card">
-            <div className="service-icon">🔮</div>
-            <h3>Personalized Horoscope</h3>
-            <p>Get daily, weekly, and monthly predictions tailored specifically to your astrological profile.</p>
+            <div className="service-icon">🌿</div>
+            <h3>Holistic Wellness</h3>
+            <p>Comprehensive wellness solutions combining ancient wisdom with modern practices.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon">🏛️</div>
+            <h3>Vastu & Nadi</h3>
+            <p>Expert Vastu consultation and Nadi readings for balanced living spaces and life path.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon">🎯</div>
+            <h3>Jamakkol Prasanam</h3>
+            <p>Traditional palmistry and predictive astrology for detailed life forecasting.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon">🌙</div>
+            <h3>Birth Chart Analysis</h3>
+            <p>Detailed natal chart interpretation revealing your cosmic blueprint and life purpose.</p>
           </div>
           <div className="service-card">
             <div className="service-icon">💫</div>
-            <h3>Relationship Compatibility</h3>
-            <p>Explore the cosmic connections between you and your loved ones with synastry analysis.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">⭐</div>
-            <h3>Career Guidance</h3>
-            <p>Find your calling and optimal career path using astrological insights and planetary influences.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🌟</div>
-            <h3>Transit Predictions</h3>
-            <p>Understand current planetary movements and their impact on your life events and decisions.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🪐</div>
-            <h3>Remedial Measures</h3>
-            <p>Receive personalized recommendations to balance energies and enhance positive outcomes.</p>
+            <h3>Personalized Horoscope</h3>
+            <p>Daily, weekly, and monthly predictions tailored to your astrological profile.</p>
           </div>
         </div>
       </section>
@@ -77,23 +79,60 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="about">
         <div className="about-content">
-          <h2>About Me</h2>
+          <h2>About M. Parthasarathy</h2>
           <p>
-            With over 15 years of experience in Vedic and Western astrology, I'm dedicated to helping individuals 
-            understand their cosmic destiny and navigate life's challenges with confidence.
+            <strong>M.A., B.Ed.</strong> - An esteemed astrologer with deep expertise in Vedic astrology, 
+            Western astrology, and traditional predictive sciences. M. Parthasarathy heads the 
+            <em> Sri Arunachaleswara Astrology & Research Centre</em>, dedicated to providing authentic 
+            guidance for personal and professional growth.
           </p>
           <p>
-            My approach combines ancient astrological wisdom with modern psychological insights, providing 
-            practical guidance for personal growth and spiritual development.
+            With years of dedicated research and practical experience, the centre specializes in comprehensive 
+            astrological services including career guidance, business consultations, holistic wellness, 
+            Vastu expertise, Nadi readings, and Jamakkol Prasanam (palmistry).
           </p>
           <div className="credentials">
-            <h3>Credentials</h3>
+            <h3>Specializations</h3>
             <ul>
-              <li>✓ Certified Vedic Astrologer</li>
-              <li>✓ Bachelor's in Psychology</li>
-              <li>✓ 15+ Years Professional Experience</li>
-              <li>✓ 500+ Satisfied Clients</li>
+              <li>✓ Vedic Astrology (Traditional & Contemporary)</li>
+              <li>✓ Western Astrology</li>
+              <li>✓ Vastu Shastra</li>
+              <li>✓ Nadi Readings</li>
+              <li>✓ Jamakkol Prasanam (Palmistry)</li>
+              <li>✓ Career & Business Consultation</li>
+              <li>✓ Holistic Wellness Guidance</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Areas Section */}
+      <section className="service-areas">
+        <h2>Focus Areas</h2>
+        <div className="areas-grid">
+          <div className="area-item">
+            <h3>💼 Career & Business</h3>
+            <p>Job selection, business ventures, timing for major decisions</p>
+          </div>
+          <div className="area-item">
+            <h3>❤️ Relationships</h3>
+            <p>Compatibility analysis, marriage timing, family harmony</p>
+          </div>
+          <div className="area-item">
+            <h3>🏠 Vastu Solutions</h3>
+            <p>Home and office Vastu consultation for prosperity</p>
+          </div>
+          <div className="area-item">
+            <h3>💎 Wealth & Prosperity</h3>
+            <p>Financial planning and investment guidance</p>
+          </div>
+          <div className="area-item">
+            <h3>🧘 Holistic Health</h3>
+            <p>Health predictions and wellness recommendations</p>
+          </div>
+          <div className="area-item">
+            <h3>🔮 Remedial Measures</h3>
+            <p>Personalized solutions and positive interventions</p>
           </div>
         </div>
       </section>
@@ -103,16 +142,16 @@ export default function Home() {
         <h2>Client Testimonials</h2>
         <div className="testimonials-grid">
           <div className="testimonial">
-            <p className="text">"The birth chart reading was incredibly insightful and helped me make important life decisions."</p>
-            <p className="author">- Sarah M.</p>
+            <p className="text">"M. Parthasarathy's career guidance was transformative. His insights helped me make the right professional choices."</p>
+            <p className="author">- Rajesh K.</p>
           </div>
           <div className="testimonial">
-            <p className="text">"Her guidance about career transitions was spot-on. Highly recommend!"</p>
-            <p className="author">- John D.</p>
+            <p className="text">"The Vastu consultation completely changed the energy in our home. Highly recommend!"</p>
+            <p className="author">- Priya M.</p>
           </div>
           <div className="testimonial">
-            <p className="text">"The relationship compatibility analysis brought so much clarity to my partnership."</p>
-            <p className="author">- Emma R.</p>
+            <p className="text">"Accurate predictions and practical guidance. His holistic approach to wellness is remarkable."</p>
+            <p className="author">- Anita R.</p>
           </div>
         </div>
       </section>
@@ -120,7 +159,7 @@ export default function Home() {
       {/* Newsletter Section */}
       <section className="newsletter">
         <h2>Stay Connected</h2>
-        <p>Subscribe to receive monthly horoscopes and cosmic insights</p>
+        <p>Subscribe to receive monthly astrological insights and wellness tips</p>
         <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
           <input
             type="email"
@@ -135,11 +174,15 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; 2024 Celestial Guidance. All rights reserved.</p>
+        <p>&copy; 2024 Sri Arunachaleswara Astrology & Research Centre. All rights reserved.</p>
+        <div className="contact-footer">
+          <p>📱 +91 93677 80030 | 📧 sarathymanickam@gmail.com</p>
+          <p>📍 24/10, Thiruvavaduthurai Madathu Street, Vaitheeswaran Koil - 609117, Tamil Nadu, India</p>
+        </div>
         <div className="social-links">
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="#">Twitter</a>
+          <a href="https://wa.me/919367780030" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="tel:+919367780030">Call Us</a>
+          <a href="mailto:sarathymanickam@gmail.com">Email</a>
         </div>
       </footer>
     </>

@@ -17,13 +17,13 @@ body {
 
 /* Navigation */
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #c9941d 50%, #8b6914 100%);
   color: white;
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nav-container {
@@ -36,11 +36,12 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   text-decoration: none;
   color: white;
   cursor: pointer;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links {
@@ -53,15 +54,17 @@ body {
   color: white;
   text-decoration: none;
   transition: opacity 0.3s;
+  font-weight: 500;
 }
 
 .nav-links a:hover {
   opacity: 0.8;
+  text-decoration: underline;
 }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1a252f 100%);
   color: white;
   padding: 8rem 2rem;
   text-align: center;
@@ -70,19 +73,36 @@ body {
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
   animation: fadeInDown 0.8s ease-out;
+  color: #d4af37;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.hero p {
+.astrologer-name {
+  font-size: 2.5rem;
+  color: #ff1493;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.credentials {
+  font-size: 1.2rem;
+  color: #d4af37;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.hero > p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
   opacity: 0.95;
@@ -91,19 +111,21 @@ body {
 
 .cta-button {
   display: inline-block;
-  background-color: #ffd700;
-  color: #333;
-  padding: 0.75rem 2rem;
+  background-color: #ff1493;
+  color: white;
+  padding: 0.9rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.1rem;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
 }
 
 .hero-background {
@@ -112,8 +134,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 20, 147, 0.05) 0%, transparent 50%);
   z-index: 0;
 }
 
@@ -128,7 +150,8 @@ body {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #667eea;
+  color: #d4af37;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .services-grid {
@@ -140,78 +163,131 @@ body {
 .service-card {
   background: white;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  border: 3px solid transparent;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.3);
+  border-color: #d4af37;
 }
 
 .service-icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
 }
 
 .service-card h3 {
-  color: #667eea;
+  color: #2c3e50;
   margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
 
 .service-card p {
   color: #666;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* About Section */
-.about {
+/* Service Areas Section */
+.service-areas {
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   padding: 4rem 2rem;
   margin: 2rem 0;
 }
 
+.service-areas h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.area-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #d4af37;
+  transition: transform 0.3s;
+}
+
+.area-item:hover {
+  transform: translateY(-5px);
+}
+
+.area-item h3 {
+  color: #ff1493;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.area-item p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* About Section */
+.about {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  padding: 4rem 2rem;
+  color: white;
+}
+
 .about-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .about h2 {
   font-size: 2.5rem;
-  color: #667eea;
+  color: #d4af37;
   margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .about p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   line-height: 1.8;
-  color: #333;
+  color: #ecf0f1;
 }
 
-.credentials {
+.about .credentials {
   margin-top: 2rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #d4af37;
 }
 
-.credentials h3 {
-  color: #667eea;
+.about .credentials h3 {
+  color: #d4af37;
   margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
-.credentials ul {
+.about .credentials ul {
   list-style: none;
 }
 
-.credentials li {
+.about .credentials li {
   padding: 0.5rem 0;
   font-size: 1rem;
-  color: #333;
+  color: #ecf0f1;
+  margin-left: 1rem;
 }
 
 /* Testimonials Section */
@@ -225,7 +301,8 @@ body {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #667eea;
+  color: #d4af37;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .testimonials-grid {
@@ -239,23 +316,30 @@ body {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #667eea;
+  border-left: 5px solid #ff1493;
+  transition: transform 0.3s;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px);
 }
 
 .testimonial .text {
   font-style: italic;
   color: #555;
   margin-bottom: 1rem;
+  line-height: 1.7;
 }
 
 .testimonial .author {
   font-weight: bold;
-  color: #667eea;
+  color: #d4af37;
+  font-size: 0.95rem;
 }
 
 /* Newsletter Section */
 .newsletter {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #c9941d 50%, #8b6914 100%);
   color: white;
   padding: 3rem 2rem;
   text-align: center;
@@ -264,11 +348,13 @@ body {
 .newsletter h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .newsletter p {
   margin-bottom: 2rem;
-  opacity: 0.9;
+  opacity: 0.95;
+  font-size: 1.05rem;
 }
 
 .newsletter-form {
@@ -288,46 +374,71 @@ body {
 
 .newsletter-form button {
   padding: 0.75rem 1.5rem;
-  background-color: #ffd700;
-  color: #333;
+  background-color: #ff1493;
+  color: white;
   border: none;
   border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .newsletter-form button:hover {
   transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 20, 147, 0.4);
 }
 
 /* Footer */
 .footer {
-  background: #333;
+  background: #1a252f;
   color: white;
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   margin-top: 3rem;
 }
 
 .footer p {
   margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.contact-footer {
+  background: rgba(212, 175, 55, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.contact-footer a {
+  color: #d4af37;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.contact-footer a:hover {
+  opacity: 0.8;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .social-links a {
-  color: #ffd700;
+  color: #d4af37;
   text-decoration: none;
+  font-weight: 500;
   transition: opacity 0.3s;
+  border: 2px solid #d4af37;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
 }
 
 .social-links a:hover {
   opacity: 0.8;
+  background: rgba(212, 175, 55, 0.1);
 }
 
 /* Contact Page */
@@ -339,9 +450,10 @@ body {
 
 .contact-page h1 {
   font-size: 2.5rem;
-  color: #667eea;
+  color: #d4af37;
   text-align: center;
   margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .contact-page > p {
@@ -363,7 +475,7 @@ body {
 }
 
 .contact-info h2 {
-  color: #667eea;
+  color: #d4af37;
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
@@ -373,20 +485,79 @@ body {
 }
 
 .info-item h3 {
-  color: #667eea;
+  color: #ff1493;
   margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .info-item p {
   color: #555;
-  line-height: 1.6;
+  line-height: 1.8;
+}
+
+.info-item a {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.info-item a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.quick-contact {
+  background: #f0f0f0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #d4af37;
+}
+
+.quick-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-whatsapp,
+.btn-call {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.8rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 0.9rem;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.btn-call {
+  background: #ff1493;
+  color: white;
+}
+
+.btn-call:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 20, 147, 0.4);
 }
 
 .contact-form {
   background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -406,7 +577,7 @@ body {
   width: 100%;
   padding: 0.75rem;
   border: 2px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.3s;
@@ -416,16 +587,17 @@ body {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
 }
 
 .submit-btn {
   width: 100%;
-  padding: 0.75rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #d4af37 0%, #c9941d 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -434,7 +606,7 @@ body {
 
 .submit-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
 }
 
 .success-message {
@@ -442,6 +614,10 @@ body {
   margin-top: 1rem;
   font-weight: bold;
   text-align: center;
+  padding: 1rem;
+  background: #d4edda;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
 }
 
 /* Animations */
@@ -470,7 +646,11 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .astrologer-name {
+    font-size: 1.8rem;
   }
 
   .nav-links {
@@ -480,7 +660,8 @@ body {
 
   .services h2,
   .about h2,
-  .testimonials h2 {
+  .testimonials h2,
+  .service-areas h2 {
     font-size: 2rem;
   }
 
@@ -491,5 +672,46 @@ body {
 
   .newsletter-form {
     flex-direction: column;
+  }
+
+  .quick-links {
+    flex-direction: column;
+  }
+
+  .btn-whatsapp,
+  .btn-call {
+    min-width: auto;
+  }
+
+  .hero {
+    padding: 4rem 2rem;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .astrologer-name {
+    font-size: 1.3rem;
+  }
+
+  .credentials {
+    font-size: 0.9rem;
+  }
+
+  .nav-links {
+    gap: 0.5rem;
+    font-size: 0.8rem;
   }
 }
