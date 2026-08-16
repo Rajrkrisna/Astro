@@ -4,21 +4,19 @@ import React, { useState, useEffect } from 'react';
 
 /**
  * Vedic Date of Birth Picker Component
- * Provides explicit Day (01-31), Month (Jan-Dec), and Year (1930-2026) dropdowns
- * so users can easily select previous years without struggling with native calendar widgets.
+ * Uses compact DD / MM / YYYY formats that fit inside every box with 100% visibility.
  */
 export default function DatePickerVedic({ value = '', onChange, idPrefix = 'dob', required = false }) {
-  // Parse incoming date value (YYYY-MM-DD or DD-MM-YYYY)
   const parseInitialDate = (valStr) => {
     if (!valStr) return { day: '', month: '', year: '' };
     
-    // Check YYYY-MM-DD
+    // YYYY-MM-DD
     const isoMatch = valStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (isoMatch) {
       return { year: isoMatch[1], month: isoMatch[2], day: isoMatch[3] };
     }
 
-    // Check DD-MM-YYYY
+    // DD-MM-YYYY
     const dmyMatch = valStr.match(/^(\d{2})-(\d{2})-(\d{4})$/);
     if (dmyMatch) {
       return { day: dmyMatch[1], month: dmyMatch[2], year: dmyMatch[3] };
@@ -73,7 +71,7 @@ export default function DatePickerVedic({ value = '', onChange, idPrefix = 'dob'
   // Days: 01 to 31
   const daysList = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
 
-  // Months: 01 to 12 with short name
+  // Months: Clean short 3-letter strings that fit in any box
   const monthsList = [
     { num: '01', name: 'Jan (01)' },
     { num: '02', name: 'Feb (02)' },
@@ -89,7 +87,7 @@ export default function DatePickerVedic({ value = '', onChange, idPrefix = 'dob'
     { num: '12', name: 'Dec (12)' },
   ];
 
-  // Years: 2026 down to 1930 (covers 96+ years easily for astrology birth charts)
+  // Years: 2026 down to 1930 (covers 96+ years)
   const currentYear = new Date().getFullYear();
   const yearsList = [];
   for (let y = currentYear; y >= 1930; y--) {
@@ -126,7 +124,7 @@ export default function DatePickerVedic({ value = '', onChange, idPrefix = 'dob'
         aria-label="Birth Month"
         required={required}
       >
-        <option value="">Month</option>
+        <option value="">MM</option>
         {monthsList.map((m) => (
           <option key={m.num} value={m.num}>
             {m.name}
@@ -136,7 +134,7 @@ export default function DatePickerVedic({ value = '', onChange, idPrefix = 'dob'
 
       <span className="date-slash-dot" aria-hidden="true">/</span>
 
-      {/* Year Dropdown (Allows instant selection of 1930-2026) */}
+      {/* Year Dropdown */}
       <select
         id={`${idPrefix}-year`}
         value={year}
@@ -145,7 +143,7 @@ export default function DatePickerVedic({ value = '', onChange, idPrefix = 'dob'
         aria-label="Birth Year"
         required={required}
       >
-        <option value="">YYYY (Year)</option>
+        <option value="">YYYY</option>
         {yearsList.map((y) => (
           <option key={y} value={y}>
             {y}

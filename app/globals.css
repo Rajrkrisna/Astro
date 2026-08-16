@@ -2458,36 +2458,45 @@ button {
   box-sizing: border-box;
 }
 
-.date-native-select {
-  width: 100%;
-  min-width: 0;
-  height: 48px;
-  min-height: 48px;
-  padding: 0.35rem 0.75rem 0.35rem 0.35rem;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-heading);
-  background-color: #ffffff;
-  border: 1.5px solid var(--gold-border);
-  border-radius: var(--radius-md);
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-  text-align: center;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 0.25rem center;
-  background-size: 10px;
+.date-picker-vedic-card select,
+.time-picker-12hr-card select,
+.date-native-select,
+.time-hour-select,
+.time-min-select {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  padding: 0 3px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  color: var(--text-heading) !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1.5px solid var(--gold-border) !important;
+  border-radius: var(--radius-md) !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  text-align-last: center !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
-.date-native-select:focus {
-  border-color: var(--gold-500);
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+.date-picker-vedic-card select:focus,
+.time-picker-12hr-card select:focus,
+.date-native-select:focus,
+.time-hour-select:focus,
+.time-min-select:focus {
+  border-color: var(--gold-500) !important;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25) !important;
 }
 
-.date-slash-dot {
+.date-slash-dot,
+.time-colon-dot {
   font-size: 1.15rem;
   font-weight: 900;
   color: var(--gold-700);
@@ -2500,18 +2509,21 @@ button {
   justify-content: center;
 }
 
-[data-theme="dark"] .date-native-select {
+[data-theme="dark"] .date-picker-vedic-card select,
+[data-theme="dark"] .time-picker-12hr-card select {
+  background-color: #0f172a !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .date-picker-vedic-card select option,
+[data-theme="dark"] .time-picker-12hr-card select option {
   background-color: #0f172a;
-  border-color: rgba(245, 158, 11, 0.3);
   color: #f8fafc;
 }
 
-[data-theme="dark"] .date-native-select option {
-  background-color: #0f172a;
-  color: #f8fafc;
-}
-
-[data-theme="dark"] .date-slash-dot {
+[data-theme="dark"] .date-slash-dot,
+[data-theme="dark"] .time-colon-dot {
   color: #fbbf24;
 }
 
@@ -2526,50 +2538,6 @@ button {
   height: 48px;
   min-height: 48px;
   box-sizing: border-box;
-}
-
-.time-hour-select,
-.time-min-select {
-  width: 100%;
-  min-width: 0;
-  height: 48px;
-  min-height: 48px;
-  padding: 0.35rem 0.75rem 0.35rem 0.35rem;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-heading);
-  background-color: #ffffff;
-  border: 1.5px solid var(--gold-border);
-  border-radius: var(--radius-md);
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-  text-align: center;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 0.25rem center;
-  background-size: 10px;
-}
-
-.time-hour-select:focus,
-.time-min-select:focus {
-  border-color: var(--gold-500);
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
-}
-
-.time-colon-dot {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--gold-700);
-  line-height: 48px;
-  width: 6px;
-  padding: 0;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .ampm-segmented-control {
