@@ -4,7 +4,7 @@ export const zodiacData = [
     symbol: 'மேஷம்',
     tamilLogo: 'மே',
     tamilFullName: 'மேஷம்',
-    names: { en: 'Aries', ta: 'மேஷம்', hi: 'मेष (Aries)' },
+    names: { en: 'Aries', ta: 'மேஷம்', hi: 'मेष' },
     ruler: { en: 'Mars (Sevvai)', ta: 'செவ்வாய்', hi: 'मंगल (செவ்வாய்)' },
     element: { en: 'Fire (Neruppu)', ta: 'நெருப்பு', hi: 'अग्नि' },
     horoscope: {
@@ -20,7 +20,7 @@ export const zodiacData = [
     symbol: 'ரிஷபம்',
     tamilLogo: 'ரி',
     tamilFullName: 'ரிஷபம்',
-    names: { en: 'Taurus', ta: 'ரிஷபம்', hi: 'वृषभ (Taurus)' },
+    names: { en: 'Taurus', ta: 'ரிஷபம்', hi: 'वृषभ' },
     ruler: { en: 'Venus (Sukran)', ta: 'சுக்கிரன்', hi: 'शुक्र (சுக்கிரன்)' },
     element: { en: 'Earth (Nilam)', ta: 'நிலம்', hi: 'पृथ्वी' },
     horoscope: {
@@ -36,7 +36,7 @@ export const zodiacData = [
     symbol: 'மிதுனம்',
     tamilLogo: 'மி',
     tamilFullName: 'மிதுனம்',
-    names: { en: 'Gemini', ta: 'மிதுனம்', hi: 'मिथुन (Gemini)' },
+    names: { en: 'Gemini', ta: 'மிதுனம்', hi: 'मिथुन' },
     ruler: { en: 'Mercury (Budhan)', ta: 'புதன்', hi: 'बुध (புதன்)' },
     element: { en: 'Air (Kaatru)', ta: 'காற்று', hi: 'वायु' },
     horoscope: {
@@ -52,7 +52,7 @@ export const zodiacData = [
     symbol: 'கடகம்',
     tamilLogo: 'கட',
     tamilFullName: 'கடகம்',
-    names: { en: 'Cancer', ta: 'கடகம்', hi: 'कर्क (Cancer)' },
+    names: { en: 'Cancer', ta: 'கடகம்', hi: 'कर्क' },
     ruler: { en: 'Moon (Chandran)', ta: 'சந்திரன்', hi: 'चंद्रमा (சந்திரன்)' },
     element: { en: 'Water (Neer)', ta: 'நீர்', hi: 'जल' },
     horoscope: {
@@ -68,7 +68,7 @@ export const zodiacData = [
     symbol: 'சிம்மம்',
     tamilLogo: 'சி',
     tamilFullName: 'சிம்மம்',
-    names: { en: 'Leo', ta: 'சிம்மம்', hi: 'सिंह (Leo)' },
+    names: { en: 'Leo', ta: 'சிம்மம்', hi: 'सिंह' },
     ruler: { en: 'Sun (Sooryan)', ta: 'சூரியன்', hi: 'सूर्य (சூரியன்)' },
     element: { en: 'Fire (Neruppu)', ta: 'நெருப்பு', hi: 'अग्नि' },
     horoscope: {
@@ -84,7 +84,7 @@ export const zodiacData = [
     symbol: 'கன்னி',
     tamilLogo: 'கன்',
     tamilFullName: 'கன்னி',
-    names: { en: 'Virgo', ta: 'கன்னி', hi: 'कन्या (Virgo)' },
+    names: { en: 'Virgo', ta: 'கன்னி', hi: 'कन्या' },
     ruler: { en: 'Mercury (Budhan)', ta: 'புதன்', hi: 'बुध (புதன்)' },
     element: { en: 'Earth (Nilam)', ta: 'நிலம்', hi: 'पृथ्वी' },
     horoscope: {
@@ -100,7 +100,7 @@ export const zodiacData = [
     symbol: 'துலாம்',
     tamilLogo: 'து',
     tamilFullName: 'துலாம்',
-    names: { en: 'Libra', ta: 'துலாம்', hi: 'तुला (Libra)' },
+    names: { en: 'Libra', ta: 'துலாம்', hi: 'तुला' },
     ruler: { en: 'Venus (Sukran)', ta: 'சுக்கிரன்', hi: 'शुक्र (சுக்கிரன்)' },
     element: { en: 'Air (Kaatru)', ta: 'காற்று', hi: 'वायु' },
     horoscope: {
@@ -116,7 +116,7 @@ export const zodiacData = [
     symbol: 'விருச்சிகம்',
     tamilLogo: 'விரு',
     tamilFullName: 'விருச்சிகம்',
-    names: { en: 'Scorpio', ta: 'விருச்சிகம்', hi: 'वृश्चिक (Scorpio)' },
+    names: { en: 'Scorpio', ta: 'விருச்சிகம்', hi: 'वृश्चिक' },
     ruler: { en: 'Mars (Sevvai)', ta: 'செவ்வாய்', hi: 'मंगल (செவ்வாய்)' },
     element: { en: 'Water (Neer)', ta: 'நீர்', hi: 'जल' },
     horoscope: {
@@ -132,7 +132,7 @@ export const zodiacData = [
     symbol: 'தனுசு',
     tamilLogo: 'தனு',
     tamilFullName: 'தனுசு',
-    names: { en: 'Sagittarius', ta: 'தனுசு', hi: 'धनु (Sagittarius)' },
+    names: { en: 'Sagittarius', ta: 'தனுசு', hi: 'धनु' },
     ruler: { en: 'Jupiter (Guru)', ta: 'குரு', hi: 'बृहस्पति (குரு)' },
     element: { en: 'Fire (Neruppu)', ta: 'நெருப்பு', hi: 'अग्नि' },
     horoscope: {
@@ -148,7 +148,7 @@ export const zodiacData = [
     symbol: 'மகரம்',
     tamilLogo: 'மக',
     tamilFullName: 'மகரம்',
-    names: { en: 'Capricorn', ta: 'மகரம்', hi: 'मकर (Capricorn)' },
+    names: { en: 'Capricorn', ta: 'மகரம்', hi: 'मकर' },
     ruler: { en: 'Saturn (Sani)', ta: 'சனி', hi: 'शनि (சனி)' },
     element: { en: 'Earth (Nilam)', ta: 'நிலம்', hi: 'पृथ्वी' },
     horoscope: {
@@ -164,7 +164,7 @@ export const zodiacData = [
     symbol: 'கும்பம்',
     tamilLogo: 'கும்',
     tamilFullName: 'கும்பம்',
-    names: { en: 'Aquarius', ta: 'கும்பம்', hi: 'कुंभ (Aquarius)' },
+    names: { en: 'Aquarius', ta: 'கும்பம்', hi: 'कुंभ' },
     ruler: { en: 'Saturn (Sani)', ta: 'சனி', hi: 'शनि (சனி)' },
     element: { en: 'Air (Kaatru)', ta: 'காற்று', hi: 'वायु' },
     horoscope: {
@@ -180,7 +180,7 @@ export const zodiacData = [
     symbol: 'மீனம்',
     tamilLogo: 'மீ',
     tamilFullName: 'மீனம்',
-    names: { en: 'Pisces', ta: 'மீனம்', hi: 'मीन (Pisces)' },
+    names: { en: 'Pisces', ta: 'மீனம்', hi: 'मीन' },
     ruler: { en: 'Jupiter (Guru)', ta: 'குரு', hi: 'बृहस्पति (குரு)' },
     element: { en: 'Water (Neer)', ta: 'நீர்', hi: 'जल' },
     horoscope: {

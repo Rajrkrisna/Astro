@@ -180,12 +180,9 @@ export default function ZodiacWidget() {
                     }}
                   >
                     <div className="zodiac-rasi-icon-wrap">
-                      <ZodiacIcon signId={sign.id} size={54} className="rasi-svg-gold" />
+                      <ZodiacIcon signId={sign.id} size={56} className="rasi-svg-gold" alt={signName} />
                     </div>
-                    <div className="zodiac-dual-name-wrap">
-                      <span className="sign-name-western">{sign.names.en}</span>
-                      <span className="sign-name-tamil">{sign.tamilFullName}</span>
-                    </div>
+                    <span className="sign-name-360">{signName}</span>
                   </div>
                 );
               })}
@@ -222,13 +219,12 @@ export default function ZodiacWidget() {
         <div className="zodiac-display-card">
           <div className="zodiac-card-header">
             <div className="sign-icon-large-box">
-              <ZodiacIcon signId={selectedSign.id} size={76} className="rasi-svg-gold-huge" />
+              <ZodiacIcon signId={selectedSign.id} size={76} className="rasi-svg-gold-huge" alt={selectedSign.names[lang] || selectedSign.names.en} />
             </div>
             <div className="sign-info-meta">
-              <div className="active-sign-name-duo">
-                <h3 className="active-sign-title">{selectedSign.names[lang] || selectedSign.names.en}</h3>
-                <span className="active-sign-tamil-sub">{selectedSign.tamilFullName}</span>
-              </div>
+              <h3 className="active-sign-title">
+                {selectedSign.names[lang] || selectedSign.names.en}
+              </h3>
               <div className="sign-traits-row">
                 <span className="trait-tag">
                   <strong>{t.zodiac.rulerLabel}:</strong>{' '}

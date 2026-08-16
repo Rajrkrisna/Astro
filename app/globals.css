@@ -1037,27 +1037,13 @@ button {
   transform: scale(1.1);
 }
 
-.zodiac-dual-name-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  line-height: 1.15;
-}
-
-.sign-name-western {
-  font-size: 0.95rem;
+.sign-name-360 {
+  font-size: 1.05rem;
   font-weight: 800;
   color: var(--text-heading);
+  text-align: center;
   white-space: nowrap;
-}
-
-.sign-name-tamil {
-  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--gold-800);
-  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .rasi-svg-gold-huge {
