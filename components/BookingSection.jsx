@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import TimePicker12Hour from './TimePicker12Hour';
+import DatePickerVedic from './DatePickerVedic';
 
 export default function BookingSection({ initialService, isDedicatedPage = true }) {
   const { t } = useLanguage();
@@ -235,14 +236,12 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
 
                 <div className="form-row-2">
                   <div className="form-field">
-                    <label htmlFor="dob">{t.booking.dobLabel}</label>
-                    <input
-                      type="date"
-                      id="dob"
-                      name="dob"
+                    <label htmlFor="booking-dob-day">{t.booking.dobLabel}</label>
+                    <DatePickerVedic
+                      idPrefix="booking-dob"
                       value={formData.dob}
-                      onChange={handleChange}
-                      required
+                      onChange={(newDate) => setFormData((prev) => ({ ...prev, dob: newDate }))}
+                      required={true}
                     />
                   </div>
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
 import TimePicker12Hour from './TimePicker12Hour';
+import DatePickerVedic from './DatePickerVedic';
 
 export default function BookingDrawer() {
   const { t, lang } = useLanguage();
@@ -257,14 +258,12 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
 
                 <div className="drawer-form-row">
                   <div className="form-field">
-                    <label htmlFor="drawer-dob">{t.booking.dobLabel}</label>
-                    <input
-                      type="date"
-                      id="drawer-dob"
-                      name="dob"
+                    <label htmlFor="drawer-dob-day">{t.booking.dobLabel}</label>
+                    <DatePickerVedic
+                      idPrefix="drawer-dob"
                       value={formData.dob}
-                      onChange={handleChange}
-                      required
+                      onChange={(newDate) => setFormData((prev) => ({ ...prev, dob: newDate }))}
+                      required={true}
                     />
                   </div>
 

@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 
 /**
  * 12-Hour Time Picker Component (Indian Standard Format)
- * Perfectly aligned with adjacent input fields (48px height, no uneven sub-labels).
+ * Reliable hour, minute, and AM/PM selection with zero clipping or blocking.
  */
-export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'time' }) {
-  const parseInitialValue = (valStr) => {
+export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tob' }) {
+  const parseTime = (valStr) => {
     if (!valStr) return { hour: '12', minute: '00', period: 'AM' };
     
     const match = valStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
@@ -21,63 +21,62 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
     return { hour: '12', minute: '00', period: 'AM' };
   };
 
-  const initial = parseInitialValue(value);
+  const initial = parseTime(value);
   const [hour, setHour] = useState(initial.hour);
   const [minute, setMinute] = useState(initial.minute);
   const [period, setPeriod] = useState(initial.period);
 
   useEffect(() => {
     if (value) {
-      const parsed = parseInitialValue(value);
+      const parsed = parseTime(value);
       setHour(parsed.hour);
       setMinute(parsed.minute);
       setPeriod(parsed.period);
     }
   }, [value]);
 
-  const updateTime = (newHour, newMin, newPeriod) => {
-    const formatted = `${newHour}:${newMin} ${newPeriod}`;
+  const emitChange = (h, m, p) => {
+    const formatted = `${h}:${m} ${p}`;
     if (onChange) {
       onChange(formatted);
     }
   };
 
-  const handleHourChange = (e) => {
-    const newHour = e.target.value;
-    setHour(newHour);
-    updateTime(newHour, minute, period);
+  const handleHour = (e) => {
+    const newH = e.target.value;
+    setHour(newH);
+    emitChange(newH, minute, period);
   };
 
-  const handleMinuteChange = (e) => {
-    const newMin = e.target.value;
-    setMinute(newMin);
-    updateTime(hour, newMin, period);
+  const handleMinute = (e) => {
+    const newM = e.target.value;
+    setMinute(newM);
+    emitChange(hour, newM, period);
   };
 
-  const handlePeriodToggle = (newPeriod) => {
-    setPeriod(newPeriod);
-    updateTime(hour, minute, newPeriod);
+  const handlePeriod = (newP) => {
+    setPeriod(newP);
+    emitChange(hour, minute, newP);
   };
 
-  // Hours: Starts from 12 AM (12, 01, 02 ... 11)
-  const hoursList = ['12', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'];
+  // Hours: 12, 01, 02 .. 11 (Starts from 12 AM)
+  const hours = ['12', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'];
   
-  // Clean, non-overflowing minutes list
-  const minutesList = [
-    '00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'
-  ];
+  // Minutes: 00 to 55 (every 5 mins) + options for precision
+  const minutes = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
 
   return (
     <div className="time-picker-12hr-card">
       {/* Hour Dropdown */}
       <select
         id={`${idPrefix}-hour`}
+        name={`${idPrefix}-hour`}
         value={hour}
-        onChange={handleHourChange}
+        onChange={handleHour}
         className="time-native-select time-hour-select"
         aria-label="Hour (12-hour format)"
       >
-        {hoursList.map((h) => (
+        {hours.map((h) => (
           <option key={h} value={h}>
             {h}
           </option>
@@ -89,35 +88,40 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
       {/* Minute Dropdown */}
       <select
         id={`${idPrefix}-min`}
+        name={`${idPrefix}-min`}
         value={minute}
-        onChange={handleMinuteChange}
+        onChange={handleMinute}
         className="time-native-select time-min-select"
-        aria-label="Minutes"
+        aria-label="Minute"
       >
-        {minutesList.map((m) => (
+        {minutes.map((m) => (
           <option key={m} value={m}>
             {m}
           </option>
         ))}
       </select>
 
-      {/* AM / PM Segmented Toggle Buttons */}
-      <div className="ampm-segmented-control" role="radiogroup" aria-label="AM or PM">
+      {/* AM / PM Segmented Control */}
+      <div className="ampm-segmented-control" role="group" aria-label="Time period AM or PM">
         <button
           type="button"
-          role="radio"
-          aria-checked={period === 'AM'}
           className={`btn-ampm-tab ${period === 'AM' ? 'active' : ''}`}
-          onClick={() => handlePeriodToggle('AM')}
+          onClick={(e) => {
+            e.preventDefault();
+            handlePeriod('AM');
+          }}
+          aria-pressed={period === 'AM'}
         >
           AM
         </button>
         <button
           type="button"
-          role="radio"
-          aria-checked={period === 'PM'}
           className={`btn-ampm-tab ${period === 'PM' ? 'active' : ''}`}
-          onClick={() => handlePeriodToggle('PM')}
+          onClick={(e) => {
+            e.preventDefault();
+            handlePeriod('PM');
+          }}
+          aria-pressed={period === 'PM'}
         >
           PM
         </button>
