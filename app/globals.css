@@ -972,6 +972,45 @@ button {
   line-height: 1;
 }
 
+.tamil-rasi-emblem-badge {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-100), var(--gold-50));
+  border: 1.5px solid var(--gold-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15);
+  margin-bottom: 0.35rem;
+}
+
+.tamil-emblem-text {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--gold-900);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.tamil-logo-huge {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--gold-900);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.tamil-script-subtext {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-700);
+  margin-left: 0.35rem;
+}
+
 .sign-name-360 {
   font-size: 0.95rem;
   font-weight: 800;

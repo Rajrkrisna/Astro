@@ -178,7 +178,9 @@ export default function ZodiacWidget() {
                       rotateToIndex(idx);
                     }}
                   >
-                    <span className="sign-symbol-360">{sign.symbol}</span>
+                    <div className="tamil-rasi-emblem-badge">
+                      <span className="tamil-emblem-text">{sign.tamilFullName}</span>
+                    </div>
                     <span className="sign-name-360">{signName}</span>
                   </div>
                 );
@@ -216,11 +218,14 @@ export default function ZodiacWidget() {
         <div className="zodiac-display-card">
           <div className="zodiac-card-header">
             <div className="sign-icon-large-box">
-              <span className="sign-symbol-huge">{selectedSign.symbol}</span>
+              <span className="tamil-logo-huge">{selectedSign.tamilFullName}</span>
             </div>
             <div className="sign-info-meta">
               <h3 className="active-sign-title">
                 {selectedSign.names[lang] || selectedSign.names.en}
+                {lang !== 'ta' && (
+                  <span className="tamil-script-subtext"> ({selectedSign.tamilFullName})</span>
+                )}
               </h3>
               <div className="sign-traits-row">
                 <span className="trait-tag">
