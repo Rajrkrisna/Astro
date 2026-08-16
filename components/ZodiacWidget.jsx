@@ -1,15 +1,43 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
 import { zodiacData } from '../data/zodiacData';
+import { fetchDailyHoroscope, getFormattedTodayDate } from '../services/astrologyApi';
 
 export default function ZodiacWidget() {
   const { t, lang } = useLanguage();
   const { openBooking } = useBooking();
   const [selectedSign, setSelectedSign] = useState(zodiacData[0]);
+  const [guidanceText, setGuidanceText] = useState(
+    zodiacData[0].horoscope[lang] || zodiacData[0].horoscope.en
+  );
+  const [isLoadingApi, setIsLoadingApi] = useState(false);
+  const [todayDate, setTodayDate] = useState('');
   const scrollContainerRef = useRef(null);
+
+  // Update date on mount & language change
+  useEffect(() => {
+    setTodayDate(getFormattedTodayDate(lang));
+  }, [lang]);
+
+  // Fetch live daily horoscope from Astrologer API
+  useEffect(() => {
+    let isCurrent = true;
+    setIsLoadingApi(true);
+
+    fetchDailyHoroscope(selectedSign.id, lang).then((data) => {
+      if (isCurrent) {
+        setGuidanceText(data.text);
+        setIsLoadingApi(false);
+      }
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [selectedSign, lang]);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -108,11 +136,19 @@ export default function ZodiacWidget() {
           </div>
 
           <div className="zodiac-guidance-content">
-            <h4 className="guidance-heading">
-              <span>✦</span> {t.zodiac.todayGuidance}
-            </h4>
+            <div className="guidance-header-row">
+              <h4 className="guidance-heading">
+                <span>✦</span> {t.zodiac.todayGuidance}
+              </h4>
+              {todayDate && (
+                <span className="guidance-live-badge">
+                  <span className="live-dot"></span>
+                  {todayDate}
+                </span>
+              )}
+            </div>
             <p className="guidance-text">
-              {selectedSign.horoscope[lang] || selectedSign.horoscope.en}
+              {isLoadingApi ? '...' : guidanceText}
             </p>
           </div>
 
