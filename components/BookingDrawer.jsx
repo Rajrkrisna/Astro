@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
+import TimePicker12Hour from './TimePicker12Hour';
 
 export default function BookingDrawer() {
   const { t, lang } = useLanguage();
@@ -269,12 +270,10 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
 
                   <div className="form-field">
                     <label htmlFor="drawer-tob">{t.booking.tobLabel}</label>
-                    <input
-                      type="time"
-                      id="drawer-tob"
-                      name="tob"
+                    <TimePicker12Hour
+                      idPrefix="drawer-tob"
                       value={formData.tob}
-                      onChange={handleChange}
+                      onChange={(newTime) => setFormData((prev) => ({ ...prev, tob: newTime }))}
                     />
                   </div>
                 </div>

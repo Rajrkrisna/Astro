@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import TimePicker12Hour from './TimePicker12Hour';
 
 export default function BookingSection({ initialService, isDedicatedPage = true }) {
   const { t } = useLanguage();
@@ -247,12 +248,10 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
 
                   <div className="form-field">
                     <label htmlFor="tob">{t.booking.tobLabel}</label>
-                    <input
-                      type="time"
-                      id="tob"
-                      name="tob"
+                    <TimePicker12Hour
+                      idPrefix="booking-tob"
                       value={formData.tob}
-                      onChange={handleChange}
+                      onChange={(newTime) => setFormData((prev) => ({ ...prev, tob: newTime }))}
                     />
                   </div>
                 </div>
