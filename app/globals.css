@@ -1011,11 +1011,71 @@ button {
   margin-left: 0.35rem;
 }
 
-.sign-name-360 {
+.zodiac-rasi-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 0.35rem;
+  transition: transform 0.25s ease;
+}
+
+.zodiac-360-card.active .zodiac-rasi-icon-wrap {
+  transform: scale(1.1);
+}
+
+.rasi-svg-gold {
+  color: #b45309;
+  filter: drop-shadow(0 2px 6px rgba(217, 119, 6, 0.35));
+  transition: all 0.25s ease;
+}
+
+.zodiac-360-card.active .rasi-svg-gold {
+  color: #d97706;
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+}
+
+.zodiac-dual-name-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  line-height: 1.15;
+}
+
+.sign-name-western {
   font-size: 0.95rem;
   font-weight: 800;
   color: var(--text-heading);
   white-space: nowrap;
+}
+
+.sign-name-tamil {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--gold-800);
+  white-space: nowrap;
+}
+
+.rasi-svg-gold-huge {
+  color: #b45309;
+  filter: drop-shadow(0 4px 12px rgba(217, 119, 6, 0.4));
+}
+
+.active-sign-name-duo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.active-sign-tamil-sub {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gold-700);
 }
 
 .zodiac-360-stage-glow {

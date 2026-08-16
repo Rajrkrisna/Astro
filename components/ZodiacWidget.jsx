@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
 import { zodiacData } from '../data/zodiacData';
 import { fetchDailyHoroscope, getFormattedTodayDate } from '../services/astrologyApi';
+import ZodiacIcon from './ZodiacIcons';
 
 export default function ZodiacWidget() {
   const { t, lang } = useLanguage();
@@ -178,10 +179,13 @@ export default function ZodiacWidget() {
                       rotateToIndex(idx);
                     }}
                   >
-                    <div className="tamil-rasi-emblem-badge">
-                      <span className="tamil-emblem-text">{sign.tamilFullName}</span>
+                    <div className="zodiac-rasi-icon-wrap">
+                      <ZodiacIcon signId={sign.id} size={46} className="rasi-svg-gold" />
                     </div>
-                    <span className="sign-name-360">{signName}</span>
+                    <div className="zodiac-dual-name-wrap">
+                      <span className="sign-name-western">{sign.names.en}</span>
+                      <span className="sign-name-tamil">{sign.tamilFullName}</span>
+                    </div>
                   </div>
                 );
               })}
@@ -218,15 +222,13 @@ export default function ZodiacWidget() {
         <div className="zodiac-display-card">
           <div className="zodiac-card-header">
             <div className="sign-icon-large-box">
-              <span className="tamil-logo-huge">{selectedSign.tamilFullName}</span>
+              <ZodiacIcon signId={selectedSign.id} size={64} className="rasi-svg-gold-huge" />
             </div>
             <div className="sign-info-meta">
-              <h3 className="active-sign-title">
-                {selectedSign.names[lang] || selectedSign.names.en}
-                {lang !== 'ta' && (
-                  <span className="tamil-script-subtext"> ({selectedSign.tamilFullName})</span>
-                )}
-              </h3>
+              <div className="active-sign-name-duo">
+                <h3 className="active-sign-title">{selectedSign.names[lang] || selectedSign.names.en}</h3>
+                <span className="active-sign-tamil-sub">{selectedSign.tamilFullName}</span>
+              </div>
               <div className="sign-traits-row">
                 <span className="trait-tag">
                   <strong>{t.zodiac.rulerLabel}:</strong>{' '}
