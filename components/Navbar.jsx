@@ -5,10 +5,12 @@ import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar() {
   const { lang, setLanguage, t, languages } = useLanguage();
   const { openBooking } = useBooking();
+  const { theme, toggleTheme, isDark } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
@@ -110,8 +112,20 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* Action Area: Language Switcher & Book Consultation Button */}
+        {/* Action Area: Theme Toggle, Language Switcher & Book Consultation Button */}
         <div className="nav-actions">
+          {/* Theme Toggle Button (Day / Galaxy Night) */}
+          <button
+            type="button"
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isDark ? 'Day' : 'Galaxy Night'} theme`}
+            title={isDark ? 'Switch to Solar Day Theme' : 'Switch to Galaxy Night Theme'}
+          >
+            <span className="theme-icon-glow">{isDark ? '🌙' : '☀️'}</span>
+            <span className="theme-label-text">{isDark ? 'Night' : 'Day'}</span>
+          </button>
+
           {/* Language Switcher Dropdown */}
           <div className="lang-switcher-wrap" ref={dropdownRef}>
             <button
@@ -220,6 +234,19 @@ export default function Navbar() {
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Mobile Theme Switcher */}
+            <div className="mobile-theme-row">
+              <span className="mobile-theme-label">🌌 Theme:</span>
+              <button
+                type="button"
+                className="mobile-theme-toggle-btn"
+                onClick={toggleTheme}
+              >
+                <span>{isDark ? '🌙 Galaxy Night' : '☀️ Solar Day'}</span>
+                <span className="theme-switch-indicator">Tap to Switch</span>
+              </button>
             </div>
 
             <nav className="mobile-nav-links">
