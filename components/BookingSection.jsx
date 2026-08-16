@@ -92,7 +92,17 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
   return (
     <section id="booking" className="booking-section-centered">
       <div className="booking-centered-container">
-        {/* Main Centered Form Card Only */}
+        {/* Section Header */}
+        <div className="section-header text-center booking-header-center">
+          <div className="section-badge">
+            <span className="badge-sparkle">✦</span>
+            <span>{t.booking.badge}</span>
+          </div>
+          <h1 className="section-title">{t.booking.title}</h1>
+          <p className="section-subtitle">{t.booking.subtitle}</p>
+        </div>
+
+        {/* Main Centered Form Card */}
         <div className="booking-form-wrapper-centered">
           {submitted ? (
             <div className="booking-success-card">

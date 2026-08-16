@@ -11,20 +11,21 @@ import BookingSection from '../../components/BookingSection';
 function BookingPageContent() {
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get('service');
-  const { openBooking } = useBooking();
+  const { closeBooking } = useBooking();
 
   useEffect(() => {
-    openBooking(serviceParam || 'birth-chart');
-  }, [serviceParam]);
+    // Ensure overlay drawer is closed so the dedicated page form renders stably
+    closeBooking();
+  }, []);
 
   return (
     <main className="booking-page-wrapper">
       <Celestial3DBackground />
       <Navbar />
 
-      <section className="booking-dedicated-side-wrapper">
-        <BookingSection initialService={serviceParam || 'birth-chart'} />
-      </section>
+      <div className="booking-page-content-container">
+        <BookingSection initialService={serviceParam || 'birth-chart'} isDedicatedPage={true} />
+      </div>
 
       <Footer />
     </main>
