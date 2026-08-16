@@ -3,11 +3,10 @@
 import React, { useState, useEffect } from 'react';
 
 /**
- * 12-Hour Time Picker Component
- * Starts with 12 AM and provides Hour (12, 01..11), Minute (00..59), and AM/PM options.
+ * 12-Hour Time Picker Component (Indian Standard Format)
+ * Starts from 12 AM with clean Hour, Minute (never overflows), and clear AM/PM toggle.
  */
 export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'time' }) {
-  // Parse existing value if provided (e.g., '12:00 AM' or '05:30 PM')
   const parseInitialValue = (valStr) => {
     if (!valStr) return { hour: '12', minute: '00', period: 'AM' };
     
@@ -15,7 +14,7 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
     if (match) {
       return {
         hour: match[1].padStart(2, '0'),
-        minute: match[2],
+        minute: match[2].padStart(2, '0'),
         period: match[3].toUpperCase(),
       };
     }
@@ -27,7 +26,6 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
   const [minute, setMinute] = useState(initial.minute);
   const [period, setPeriod] = useState(initial.period);
 
-  // Sync internal state when external value changes
   useEffect(() => {
     if (value) {
       const parsed = parseInitialValue(value);
@@ -56,27 +54,29 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
     updateTime(hour, newMin, period);
   };
 
-  const handlePeriodChange = (e) => {
-    const newPeriod = e.target.value;
+  const handlePeriodToggle = (newPeriod) => {
     setPeriod(newPeriod);
     updateTime(hour, minute, newPeriod);
   };
 
-  // Hours: Starting from 12 AM (12, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11)
+  // Hours: Starts from 12 AM (12, 01, 02 ... 11)
   const hoursList = ['12', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'];
   
-  // Minutes: 00 to 59
-  const minutesList = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
+  // Clean, non-overflowing minutes list
+  const minutesList = [
+    '00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'
+  ];
 
   return (
-    <div className="time-picker-12hr-wrap">
+    <div className="time-picker-12hr-card">
       {/* Hour Dropdown */}
-      <div className="time-select-unit">
+      <div className="time-input-block">
+        <label htmlFor={`${idPrefix}-hour`} className="time-sub-tag">HR</label>
         <select
           id={`${idPrefix}-hour`}
           value={hour}
           onChange={handleHourChange}
-          className="time-select hour-select"
+          className="time-native-select"
           aria-label="Hour (12-hour format)"
         >
           {hoursList.map((h) => (
@@ -85,18 +85,18 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
             </option>
           ))}
         </select>
-        <span className="time-unit-label">Hr</span>
       </div>
 
-      <span className="time-separator">:</span>
+      <span className="time-colon-dot" aria-hidden="true">:</span>
 
-      {/* Minute Dropdown */}
-      <div className="time-select-unit">
+      {/* Minute Dropdown (Compact list that fits on screen without crossing window) */}
+      <div className="time-input-block">
+        <label htmlFor={`${idPrefix}-min`} className="time-sub-tag">MIN</label>
         <select
           id={`${idPrefix}-min`}
           value={minute}
           onChange={handleMinuteChange}
-          className="time-select min-select"
+          className="time-native-select"
           aria-label="Minutes"
         >
           {minutesList.map((m) => (
@@ -105,22 +105,31 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
             </option>
           ))}
         </select>
-        <span className="time-unit-label">Min</span>
       </div>
 
-      {/* AM / PM Dropdown */}
-      <div className="time-select-unit period-unit">
-        <select
-          id={`${idPrefix}-period`}
-          value={period}
-          onChange={handlePeriodChange}
-          className="time-select period-select"
-          aria-label="AM or PM"
-        >
-          <option value="AM">AM</option>
-          <option value="PM">PM</option>
-        </select>
-        <span className="time-unit-label">Meridiem</span>
+      {/* AM / PM Segmented Toggle Buttons (Crystal clear, 100% visible) */}
+      <div className="time-input-block period-toggle-block">
+        <span className="time-sub-tag">AM / PM</span>
+        <div className="ampm-segmented-control" role="radiogroup" aria-label="AM or PM">
+          <button
+            type="button"
+            role="radio"
+            aria-checked={period === 'AM'}
+            className={`btn-ampm-tab ${period === 'AM' ? 'active' : ''}`}
+            onClick={() => handlePeriodToggle('AM')}
+          >
+            AM
+          </button>
+          <button
+            type="button"
+            role="radio"
+            aria-checked={period === 'PM'}
+            className={`btn-ampm-tab ${period === 'PM' ? 'active' : ''}`}
+            onClick={() => handlePeriodToggle('PM')}
+          >
+            PM
+          </button>
+        </div>
       </div>
     </div>
   );
