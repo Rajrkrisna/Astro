@@ -1,7 +1,6 @@
 import './globals.css';
 import { LanguageProvider } from '../context/LanguageContext';
 import { BookingProvider } from '../context/BookingContext';
-import { ThemeProvider } from '../context/ThemeContext';
 import BookingDrawer from '../components/BookingDrawer';
 import WhatsAppFloat from '../components/WhatsAppFloat';
 
@@ -25,7 +24,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#060814',
+  themeColor: '#fffdfa',
 };
 
 export default function RootLayout({ children }) {
@@ -40,15 +39,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <ThemeProvider>
-          <LanguageProvider>
-            <BookingProvider>
-              {children}
-              <BookingDrawer />
-              <WhatsAppFloat />
-            </BookingProvider>
-          </LanguageProvider>
-        </ThemeProvider>
+        <LanguageProvider>
+          <BookingProvider>
+            {children}
+            <BookingDrawer />
+            <WhatsAppFloat />
+          </BookingProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
