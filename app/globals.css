@@ -417,47 +417,69 @@ button {
 }
 
 /* Mobile Toggle */
+/* Mobile Toggle */
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 0.45rem 0.55rem;
   border-radius: var(--radius-sm);
   background: var(--gold-50);
-  border: 1px solid var(--gold-400);
+  border: 1.5px solid var(--gold-400);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  flex-shrink: 0;
 }
 
 .mobile-menu-toggle .bar {
-  width: 22px;
-  height: 2.5px;
+  width: 20px;
+  height: 2px;
   background: var(--gold-900);
   border-radius: 2px;
   transition: all 0.2s ease;
+  pointer-events: none;
 }
 
 /* Mobile Drawer */
 .mobile-drawer-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  backdrop-filter: blur(4px);
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  animation: drawerFadeIn 0.2s ease-out;
+  touch-action: auto;
 }
 
 .mobile-drawer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 85%;
-  max-width: 340px;
-  height: 100%;
-  background: #ffffff;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  overflow-y: auto;
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 85% !important;
+  max-width: 330px !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  background: #ffffff !important;
+  padding: 1.5rem 1.25rem 2rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+  overflow-y: auto !important;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.3) !important;
+  animation: drawerSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 100000 !important;
+  border-left: 2px solid var(--gold-border);
 }
 
 .mobile-drawer-header {

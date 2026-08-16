@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
@@ -11,7 +12,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +30,17 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -146,9 +163,14 @@ export default function Navbar() {
 
           {/* Mobile Hamburger Button */}
           <button
+            type="button"
             className={`mobile-menu-toggle ${mobileMenuOpen ? 'open' : ''}`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setMobileMenuOpen(!mobileMenuOpen);
+            }}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             <span className="bar"></span>
             <span className="bar"></span>
@@ -157,15 +179,21 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="mobile-drawer-overlay" onClick={() => setMobileMenuOpen(false)}>
+      {/* Mobile Drawer Menu Mounted via Portal to document.body */}
+      {mounted && mobileMenuOpen && createPortal(
+        <div 
+          className="mobile-drawer-overlay" 
+          onClick={() => setMobileMenuOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
           <div className="mobile-drawer" onClick={(e) => e.stopPropagation()}>
             <div className="mobile-drawer-header">
               <div className="drawer-logo">
                 <span className="logo-star">✦</span> {t.nav.brand}
               </div>
               <button
+                type="button"
                 className="drawer-close-btn"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Close menu"
@@ -181,6 +209,7 @@ export default function Navbar() {
                 {languages.map((item) => (
                   <button
                     key={item.code}
+                    type="button"
                     className={`mobile-lang-pill ${item.code === lang ? 'active' : ''}`}
                     onClick={() => {
                       setLanguage(item.code);
@@ -248,7 +277,8 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
