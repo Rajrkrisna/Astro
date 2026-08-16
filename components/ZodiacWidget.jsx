@@ -15,7 +15,13 @@ export default function ZodiacWidget() {
   );
   const [isLoadingApi, setIsLoadingApi] = useState(false);
   const [todayDate, setTodayDate] = useState('');
+
   const scrollContainerRef = useRef(null);
+  const activeTabRef = useRef(null);
+  const isAutoScrolling = useRef(false);
+
+  // Triple zodiac dataset for seamless infinite / recursive horizontal scrolling
+  const infiniteZodiacList = [...zodiacData, ...zodiacData, ...zodiacData];
 
   // Update date on mount & language change
   useEffect(() => {
@@ -39,16 +45,49 @@ export default function ZodiacWidget() {
     };
   }, [selectedSign, lang]);
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -240, behavior: 'smooth' });
+  // Center active tab smoothly whenever selectedSign changes
+  useEffect(() => {
+    if (activeTabRef.current && scrollContainerRef.current) {
+      isAutoScrolling.current = true;
+      activeTabRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
+
+      const timer = setTimeout(() => {
+        isAutoScrolling.current = false;
+      }, 400);
+
+      return () => clearTimeout(timer);
+    }
+  }, [selectedSign]);
+
+  // Infinite scroll boundary wrapper
+  const handleScroll = () => {
+    const el = scrollContainerRef.current;
+    if (!el || isAutoScrolling.current) return;
+
+    const singleSetWidth = el.scrollWidth / 3;
+    if (el.scrollLeft <= 10) {
+      el.scrollLeft += singleSetWidth;
+    } else if (el.scrollLeft >= singleSetWidth * 2 - 10) {
+      el.scrollLeft -= singleSetWidth;
     }
   };
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 240, behavior: 'smooth' });
-    }
+  // Recursive Previous Arrow
+  const handlePrevSign = () => {
+    const currentIndex = zodiacData.findIndex((s) => s.id === selectedSign.id);
+    const prevIndex = (currentIndex - 1 + zodiacData.length) % zodiacData.length;
+    setSelectedSign(zodiacData[prevIndex]);
+  };
+
+  // Recursive Next Arrow
+  const handleNextSign = () => {
+    const currentIndex = zodiacData.findIndex((s) => s.id === selectedSign.id);
+    const nextIndex = (currentIndex + 1) % zodiacData.length;
+    setSelectedSign(zodiacData[nextIndex]);
   };
 
   return (
@@ -64,26 +103,33 @@ export default function ZodiacWidget() {
           <p className="section-subtitle">{t.zodiac.subtitle}</p>
         </div>
 
-        {/* Carousel with Side Cursor Arrows */}
+        {/* Recursive Carousel with Side Navigation Arrows */}
         <div className="zodiac-carousel-wrapper">
           <button
             type="button"
             className="zodiac-nav-arrow arrow-left"
-            onClick={scrollLeft}
-            aria-label="Previous zodiac signs"
-            title="Previous Signs"
+            onClick={handlePrevSign}
+            aria-label="Previous zodiac sign"
+            title="Previous Sign"
           >
             ❮
           </button>
 
-          <div className="zodiac-scroll-track" ref={scrollContainerRef}>
-            {zodiacData.map((sign) => {
+          <div
+            className="zodiac-scroll-track"
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+          >
+            {infiniteZodiacList.map((sign, idx) => {
               const isSelected = selectedSign.id === sign.id;
               const signName = sign.names[lang] || sign.names.en;
+              // Attach ref to the middle set's active item for clean centering
+              const isMiddleSetActive = isSelected && idx >= 12 && idx < 24;
 
               return (
                 <button
-                  key={sign.id}
+                  key={`${sign.id}-${idx}`}
+                  ref={isMiddleSetActive ? activeTabRef : null}
                   onClick={() => setSelectedSign(sign)}
                   className={`zodiac-tab-pill ${isSelected ? 'active' : ''}`}
                 >
@@ -97,9 +143,9 @@ export default function ZodiacWidget() {
           <button
             type="button"
             className="zodiac-nav-arrow arrow-right"
-            onClick={scrollRight}
-            aria-label="Next zodiac signs"
-            title="Next Signs"
+            onClick={handleNextSign}
+            aria-label="Next zodiac sign"
+            title="Next Sign"
           >
             ❯
           </button>
