@@ -4,7 +4,6 @@ import React, { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import WhatsAppFloat from '../../components/WhatsAppFloat';
 import Celestial3DBackground from '../../components/Celestial3DBackground';
 import { useBooking } from '../../context/BookingContext';
 import BookingSection from '../../components/BookingSection';
@@ -28,7 +27,6 @@ function BookingPageContent() {
       </section>
 
       <Footer />
-      <WhatsAppFloat />
     </main>
   );
 }

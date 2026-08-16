@@ -135,9 +135,13 @@ export default function Navbar() {
             type="button"
             onClick={() => openBooking('birth-chart')}
             className="btn-nav-cta"
+            aria-label="Book Consultation"
           >
-            <span className="btn-cta-icon">✦</span>
-            <span className="btn-cta-text">{t.nav.bookNow}</span>
+            <span className="btn-cta-icon">📅</span>
+            <span className="btn-cta-text btn-cta-text-desktop">{t.nav.bookNow}</span>
+            <span className="btn-cta-text btn-cta-text-mobile">
+              {lang === 'ta' ? 'முன்பதிவு' : lang === 'hi' ? 'बुकिंग' : 'Book'}
+            </span>
           </button>
 
           {/* Mobile Hamburger Button */}

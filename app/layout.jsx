@@ -2,6 +2,7 @@ import './globals.css';
 import { LanguageProvider } from '../context/LanguageContext';
 import { BookingProvider } from '../context/BookingContext';
 import BookingDrawer from '../components/BookingDrawer';
+import WhatsAppFloat from '../components/WhatsAppFloat';
 
 export const metadata = {
   title: 'Sri Arunachaleswara Astrology & Research Centre | Astrologer M. Parthasarathy',
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
           <BookingProvider>
             {children}
             <BookingDrawer />
+            <WhatsAppFloat />
           </BookingProvider>
         </LanguageProvider>
       </body>

@@ -11,7 +11,6 @@ import Testimonials from '../components/Testimonials';
 import Faq from '../components/Faq';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
-import WhatsAppFloat from '../components/WhatsAppFloat';
 import Celestial3DBackground from '../components/Celestial3DBackground';
 
 export default function Home() {
@@ -30,9 +29,6 @@ export default function Home() {
       <Faq />
       <Newsletter />
       <Footer />
-
-      {/* Floating WhatsApp Quick Action */}
-      <WhatsAppFloat />
     </main>
   );
 }

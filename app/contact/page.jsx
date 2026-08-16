@@ -3,7 +3,6 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import WhatsAppFloat from '../../components/WhatsAppFloat';
 import Celestial3DBackground from '../../components/Celestial3DBackground';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -156,7 +155,6 @@ export default function ContactPage() {
       </section>
 
       <Footer />
-      <WhatsAppFloat />
     </main>
   );
 }
