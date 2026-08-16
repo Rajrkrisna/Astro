@@ -438,12 +438,6 @@ export default function Celestial3DBackground() {
           ctx.beginPath();
           ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
           ctx.fill();
-
-          // Subtle Label
-          ctx.fillStyle = 'rgba(217, 119, 6, 0.9)';
-          ctx.font = '800 12px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText('☀️ Surya', p.x, p.y + radius + 18);
           return;
         }
 
