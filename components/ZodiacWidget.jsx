@@ -180,7 +180,7 @@ export default function ZodiacWidget() {
                     }}
                   >
                     <div className="zodiac-rasi-icon-wrap">
-                      <ZodiacIcon signId={sign.id} size={46} className="rasi-svg-gold" />
+                      <ZodiacIcon signId={sign.id} size={54} className="rasi-svg-gold" />
                     </div>
                     <div className="zodiac-dual-name-wrap">
                       <span className="sign-name-western">{sign.names.en}</span>
@@ -222,7 +222,7 @@ export default function ZodiacWidget() {
         <div className="zodiac-display-card">
           <div className="zodiac-card-header">
             <div className="sign-icon-large-box">
-              <ZodiacIcon signId={selectedSign.id} size={64} className="rasi-svg-gold-huge" />
+              <ZodiacIcon signId={selectedSign.id} size={76} className="rasi-svg-gold-huge" />
             </div>
             <div className="sign-info-meta">
               <div className="active-sign-name-duo">
