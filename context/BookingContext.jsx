@@ -17,7 +17,7 @@ export function BookingProvider({ children }) {
     setIsOpen(false);
   };
 
-  // Close on Escape key
+  // Close on Escape key or Android Native Back Button
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -25,8 +25,34 @@ export function BookingProvider({ children }) {
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+
+    // Native mobile back button handler
+    let mobileHandler;
+    const initMobileBack = async () => {
+      try {
+        const { App } = await import('@capacitor/app');
+        mobileHandler = await App.addListener('backButton', ({ canGoBack }) => {
+          if (isOpen) {
+            closeBooking();
+          } else if (canGoBack) {
+            window.history.back();
+          } else {
+            App.exitApp();
+          }
+        });
+      } catch (e) {
+        // Fallback for standard web browser
+      }
+    };
+    initMobileBack();
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      if (mobileHandler && typeof mobileHandler.remove === 'function') {
+        mobileHandler.remove();
+      }
+    };
+  }, [isOpen]);
 
   return (
     <BookingContext.Provider

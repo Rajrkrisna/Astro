@@ -1,0 +1,31 @@
+{
+  "appId": "in.arunachalaastrology.app",
+  "appName": "Sri Arunachaleswara Astrology",
+  "webDir": "out",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "backgroundColor": "#fffdfa",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#fffdfa",
+      "overlaysWebView": false
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK",
+      "resizeOnFullScreen": true
+    }
+  }
+}
