@@ -2,7 +2,7 @@ export const zodiacData = [
   {
     id: 'aries',
     symbol: '♈',
-    names: { en: 'Aries', ta: 'மேஷம் (Mesham)', hi: 'मेष (Mesh)' },
+    names: { en: 'Aries', ta: 'மேஷம்', hi: 'मेष' },
     ruler: { en: 'Mars (Sevvai)', ta: 'செவ்வாய்', hi: 'मंगल' },
     element: { en: 'Fire', ta: 'நெருப்பு', hi: 'अग्नि' },
     horoscope: {
@@ -16,7 +16,7 @@ export const zodiacData = [
   {
     id: 'taurus',
     symbol: '♉',
-    names: { en: 'Taurus', ta: 'ரிஷபம் (Rishabam)', hi: 'वृषभ (Vrishabh)' },
+    names: { en: 'Taurus', ta: 'ரிஷபம்', hi: 'वृषभ' },
     ruler: { en: 'Venus (Sukran)', ta: 'சுக்கிரன்', hi: 'शुक्र' },
     element: { en: 'Earth', ta: 'நிலம்', hi: 'पृथ्वी' },
     horoscope: {
@@ -30,7 +30,7 @@ export const zodiacData = [
   {
     id: 'gemini',
     symbol: '♊',
-    names: { en: 'Gemini', ta: 'மிதுனம் (Mithunam)', hi: 'मिथुन (Mithun)' },
+    names: { en: 'Gemini', ta: 'மிதுனம்', hi: 'मिथुन' },
     ruler: { en: 'Mercury (Budhan)', ta: 'புதன்', hi: 'बुध' },
     element: { en: 'Air', ta: 'காற்று', hi: 'वायु' },
     horoscope: {
@@ -44,7 +44,7 @@ export const zodiacData = [
   {
     id: 'cancer',
     symbol: '♋',
-    names: { en: 'Cancer', ta: 'கடகம் (Kadagam)', hi: 'कर्क (Kark)' },
+    names: { en: 'Cancer', ta: 'கடகம்', hi: 'कर्क' },
     ruler: { en: 'Moon (Chandran)', ta: 'சந்திரன்', hi: 'चंद्रमा' },
     element: { en: 'Water', ta: 'நீர்', hi: 'जल' },
     horoscope: {
@@ -58,7 +58,7 @@ export const zodiacData = [
   {
     id: 'leo',
     symbol: '♌',
-    names: { en: 'Leo', ta: 'சிம்மம் (Simmam)', hi: 'सिंह (Singh)' },
+    names: { en: 'Leo', ta: 'சிம்மம்', hi: 'सिंह' },
     ruler: { en: 'Sun (Sooryan)', ta: 'சூரியன்', hi: 'सूर्य' },
     element: { en: 'Fire', ta: 'நெருப்பு', hi: 'अग्नि' },
     horoscope: {
@@ -72,7 +72,7 @@ export const zodiacData = [
   {
     id: 'virgo',
     symbol: '♍',
-    names: { en: 'Virgo', ta: 'கன்னி (Kanni)', hi: 'कन्या (Kanya)' },
+    names: { en: 'Virgo', ta: 'கன்னி', hi: 'कन्या' },
     ruler: { en: 'Mercury (Budhan)', ta: 'புதன்', hi: 'बुध' },
     element: { en: 'Earth', ta: 'நிலம்', hi: 'पृथ्वी' },
     horoscope: {
@@ -86,7 +86,7 @@ export const zodiacData = [
   {
     id: 'libra',
     symbol: '♎',
-    names: { en: 'Libra', ta: 'துலாம் (Thulaam)', hi: 'तुला (Tula)' },
+    names: { en: 'Libra', ta: 'துலாம்', hi: 'तुला' },
     ruler: { en: 'Venus (Sukran)', ta: 'சுக்கிரன்', hi: 'शुक्र' },
     element: { en: 'Air', ta: 'காற்று', hi: 'वायु' },
     horoscope: {
@@ -100,7 +100,7 @@ export const zodiacData = [
   {
     id: 'scorpio',
     symbol: '♏',
-    names: { en: 'Scorpio', ta: 'விருச்சிகம் (Viruchigam)', hi: 'वृश्चिक (Vrishchik)' },
+    names: { en: 'Scorpio', ta: 'விருச்சிகம்', hi: 'वृश्चिक' },
     ruler: { en: 'Mars & Ketu', ta: 'செவ்வாய்', hi: 'मंगल' },
     element: { en: 'Water', ta: 'நீர்', hi: 'जल' },
     horoscope: {
@@ -114,7 +114,7 @@ export const zodiacData = [
   {
     id: 'sagittarius',
     symbol: '♐',
-    names: { en: 'Sagittarius', ta: 'தனுசு (Dhanusu)', hi: 'धनु (Dhanu)' },
+    names: { en: 'Sagittarius', ta: 'தனுசு', hi: 'धनु' },
     ruler: { en: 'Jupiter (Guru)', ta: 'குரு', hi: 'बृहस्पति (गुरु)' },
     element: { en: 'Fire', ta: 'நெருப்பு', hi: 'अग्नि' },
     horoscope: {
@@ -128,7 +128,7 @@ export const zodiacData = [
   {
     id: 'capricorn',
     symbol: '♑',
-    names: { en: 'Capricorn', ta: 'மகரம் (Magaram)', hi: 'मकर (Makar)' },
+    names: { en: 'Capricorn', ta: 'மகரம்', hi: 'मकर' },
     ruler: { en: 'Saturn (Sani)', ta: 'சனி', hi: 'शनि' },
     element: { en: 'Earth', ta: 'நிலம்', hi: 'पृथ्वी' },
     horoscope: {
@@ -142,7 +142,7 @@ export const zodiacData = [
   {
     id: 'aquarius',
     symbol: '♒',
-    names: { en: 'Aquarius', ta: 'கும்பம் (Kumbam)', hi: 'कुंभ (Kumbh)' },
+    names: { en: 'Aquarius', ta: 'கும்பம்', hi: 'कुंभ' },
     ruler: { en: 'Saturn (Sani)', ta: 'சனி', hi: 'शनि' },
     element: { en: 'Air', ta: 'காற்று', hi: 'वायु' },
     horoscope: {
@@ -156,7 +156,7 @@ export const zodiacData = [
   {
     id: 'pisces',
     symbol: '♓',
-    names: { en: 'Pisces', ta: 'மீனம் (Meenam)', hi: 'मीन (Meen)' },
+    names: { en: 'Pisces', ta: 'மீனம்', hi: 'मीन' },
     ruler: { en: 'Jupiter (Guru)', ta: 'குரு', hi: 'बृहस्पति (गुरु)' },
     element: { en: 'Water', ta: 'நீர்', hi: 'जल' },
     horoscope: {
