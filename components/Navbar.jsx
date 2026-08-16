@@ -139,7 +139,7 @@ export default function Navbar() {
                   >
                     <span className="option-flag">{item.flag}</span>
                     <span className="option-native">{item.nativeName}</span>
-                    <span className="option-label">({item.label})</span>
+                    {item.nativeName !== item.label && <span className="option-label">({item.label})</span>}
                     {item.code === lang && <span className="option-check">✓</span>}
                   </button>
                 ))}
