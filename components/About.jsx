@@ -43,7 +43,14 @@ export default function About() {
                   <h3 className="portrait-name">M. Parthasarathy</h3>
                   <p className="portrait-degree">M.A., B.Ed.</p>
                   <div className="portrait-badge">
-                    <span>🌟 25+ Years Vedic Astrology & Research</span>
+                    <span>
+                      🌟{' '}
+                      {lang === 'ta'
+                        ? '25+ வருட ஓலைச்சுவடி & வேத ஜோதிட அனுபவம்'
+                        : lang === 'hi'
+                        ? '25+ वर्ष ताड़पत्र एवं वैदिक अनुभव'
+                        : '25+ Years Palm Leaf & Vedic Experience'}
+                    </span>
                   </div>
                   
                   {/* Clickable Google Maps Location Link */}
