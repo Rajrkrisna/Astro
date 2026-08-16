@@ -1025,15 +1025,16 @@ button {
   transform: scale(1.1);
 }
 
-.rasi-svg-gold {
-  color: #b45309;
-  filter: drop-shadow(0 2px 6px rgba(217, 119, 6, 0.35));
-  transition: all 0.25s ease;
+.rasi-gold-icon-img {
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(217, 119, 6, 0.4));
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.zodiac-360-card.active .rasi-svg-gold {
-  color: #d97706;
-  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+.zodiac-360-card.active .rasi-gold-icon-img {
+  filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+  transform: scale(1.1);
 }
 
 .zodiac-dual-name-wrap {
