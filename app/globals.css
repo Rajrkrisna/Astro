@@ -2825,6 +2825,95 @@ button {
 }
 
 /* ==========================================================================
+   Mobile Sticky Bottom Action Bar (Fixed at bottom on Mobile)
+   ========================================================================== */
+
+.mobile-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only-float {
+    display: none !important;
+  }
+
+  .mobile-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1.5px solid var(--gold-400);
+    padding: 0.6rem 0.85rem calc(0.6rem + env(safe-area-inset-bottom, 0px)) 0.85rem;
+    box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1500;
+    gap: 0.5rem;
+  }
+
+  .mobile-bar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.75rem 0.65rem;
+    border-radius: 9999px;
+    font-weight: 800;
+    font-size: 0.88rem;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .mobile-bar-book {
+    background: linear-gradient(135deg, #25d366 0%, #16a34a 100%);
+    color: #ffffff;
+    flex: 1.6;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    font-size: 0.92rem;
+  }
+
+  .mobile-bar-book:active {
+    transform: scale(0.96);
+  }
+
+  .mobile-bar-wa {
+    background: #dcfce7;
+    border: 1.5px solid #86efac;
+    color: #14532d;
+    flex: 1.1;
+  }
+
+  .mobile-bar-call {
+    background: var(--gold-100);
+    border: 1.5px solid var(--gold-400);
+    color: var(--gold-900);
+    flex: 0.9;
+  }
+
+  .bar-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .bar-label {
+    font-size: 0.84rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  body {
+    padding-bottom: 75px;
+  }
+}
+
+/* ==========================================================================
    Slide-Over Side Drawer (Booking in Side)
    ========================================================================== */
 
@@ -3203,6 +3292,48 @@ html[lang="hi"] .section-title {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+  }
+
+  .navbar-container {
+    padding: 0.65rem 0.85rem;
+    gap: 0.45rem;
+  }
+
+  .nav-actions {
+    gap: 0.35rem;
+  }
+
+  .btn-nav-cta {
+    display: inline-flex !important;
+    padding: 0.42rem 0.75rem;
+    font-size: 0.82rem;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .lang-select-btn {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.8rem;
+    gap: 0.2rem;
+  }
+
+  .mobile-booking-drawer-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #25d366 0%, #16a34a 100%);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    margin-bottom: 0.5rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
   }
 
   .section-container {
