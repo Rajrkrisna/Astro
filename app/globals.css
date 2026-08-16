@@ -2449,37 +2449,20 @@ button {
 .time-picker-12hr-card {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   width: 100%;
+  height: 48px;
+  min-height: 48px;
   box-sizing: border-box;
 }
 
-.time-input-block {
-  display: flex;
-  flex-direction: column;
+.time-hour-select,
+.time-min-select {
   flex: 1;
   min-width: 0;
-}
-
-.time-input-block.period-toggle-block {
-  flex: 1.35;
-}
-
-.time-sub-tag {
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: var(--gold-800);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
-  text-align: center;
-}
-
-.time-native-select {
-  width: 100%;
-  height: 46px;
-  min-height: 46px;
-  padding: 0.4rem 1.35rem 0.4rem 0.5rem;
+  height: 48px;
+  min-height: 48px;
+  padding: 0.4rem 1.4rem 0.4rem 0.65rem;
   font-size: 0.95rem;
   font-weight: 800;
   color: var(--text-heading);
@@ -2498,7 +2481,8 @@ button {
   background-size: 12px;
 }
 
-.time-native-select:focus {
+.time-hour-select:focus,
+.time-min-select:focus {
   border-color: var(--gold-500);
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
 }
@@ -2507,17 +2491,21 @@ button {
   font-size: 1.35rem;
   font-weight: 900;
   color: var(--gold-700);
-  line-height: 1;
+  line-height: 48px;
   padding: 0 0.05rem;
-  margin-top: 0.85rem;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ampm-segmented-control {
+  flex: 1.2;
+  min-width: 0;
   display: flex;
   align-items: center;
-  height: 46px;
-  min-height: 46px;
+  height: 48px;
+  min-height: 48px;
   background: #f8fafc;
   border: 1.5px solid var(--gold-border);
   border-radius: var(--radius-md);
@@ -2530,7 +2518,7 @@ button {
   flex: 1;
   height: 100%;
   border: none;
-  border-radius: calc(var(--radius-md) - 2px);
+  border-radius: calc(var(--radius-md) - 3px);
   background: transparent;
   color: #64748b;
   font-size: 0.88rem;
@@ -2554,13 +2542,15 @@ button {
 }
 
 /* Dark Theme overrides */
-[data-theme="dark"] .time-native-select {
+[data-theme="dark"] .time-hour-select,
+[data-theme="dark"] .time-min-select {
   background-color: #0f172a;
   border-color: rgba(245, 158, 11, 0.3);
   color: #f8fafc;
 }
 
-[data-theme="dark"] .time-native-select option {
+[data-theme="dark"] .time-hour-select option,
+[data-theme="dark"] .time-min-select option {
   background-color: #0f172a;
   color: #f8fafc;
 }

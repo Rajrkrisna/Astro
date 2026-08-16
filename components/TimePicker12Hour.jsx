@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 /**
  * 12-Hour Time Picker Component (Indian Standard Format)
- * Starts from 12 AM with clean Hour, Minute (never overflows), and clear AM/PM toggle.
+ * Perfectly aligned with adjacent input fields (48px height, no uneven sub-labels).
  */
 export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'time' }) {
   const parseInitialValue = (valStr) => {
@@ -70,66 +70,57 @@ export default function TimePicker12Hour({ value = '', onChange, idPrefix = 'tim
   return (
     <div className="time-picker-12hr-card">
       {/* Hour Dropdown */}
-      <div className="time-input-block">
-        <label htmlFor={`${idPrefix}-hour`} className="time-sub-tag">HR</label>
-        <select
-          id={`${idPrefix}-hour`}
-          value={hour}
-          onChange={handleHourChange}
-          className="time-native-select"
-          aria-label="Hour (12-hour format)"
-        >
-          {hoursList.map((h) => (
-            <option key={h} value={h}>
-              {h}
-            </option>
-          ))}
-        </select>
-      </div>
+      <select
+        id={`${idPrefix}-hour`}
+        value={hour}
+        onChange={handleHourChange}
+        className="time-native-select time-hour-select"
+        aria-label="Hour (12-hour format)"
+      >
+        {hoursList.map((h) => (
+          <option key={h} value={h}>
+            {h}
+          </option>
+        ))}
+      </select>
 
       <span className="time-colon-dot" aria-hidden="true">:</span>
 
-      {/* Minute Dropdown (Compact list that fits on screen without crossing window) */}
-      <div className="time-input-block">
-        <label htmlFor={`${idPrefix}-min`} className="time-sub-tag">MIN</label>
-        <select
-          id={`${idPrefix}-min`}
-          value={minute}
-          onChange={handleMinuteChange}
-          className="time-native-select"
-          aria-label="Minutes"
-        >
-          {minutesList.map((m) => (
-            <option key={m} value={m}>
-              {m}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Minute Dropdown */}
+      <select
+        id={`${idPrefix}-min`}
+        value={minute}
+        onChange={handleMinuteChange}
+        className="time-native-select time-min-select"
+        aria-label="Minutes"
+      >
+        {minutesList.map((m) => (
+          <option key={m} value={m}>
+            {m}
+          </option>
+        ))}
+      </select>
 
-      {/* AM / PM Segmented Toggle Buttons (Crystal clear, 100% visible) */}
-      <div className="time-input-block period-toggle-block">
-        <span className="time-sub-tag">AM / PM</span>
-        <div className="ampm-segmented-control" role="radiogroup" aria-label="AM or PM">
-          <button
-            type="button"
-            role="radio"
-            aria-checked={period === 'AM'}
-            className={`btn-ampm-tab ${period === 'AM' ? 'active' : ''}`}
-            onClick={() => handlePeriodToggle('AM')}
-          >
-            AM
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={period === 'PM'}
-            className={`btn-ampm-tab ${period === 'PM' ? 'active' : ''}`}
-            onClick={() => handlePeriodToggle('PM')}
-          >
-            PM
-          </button>
-        </div>
+      {/* AM / PM Segmented Toggle Buttons */}
+      <div className="ampm-segmented-control" role="radiogroup" aria-label="AM or PM">
+        <button
+          type="button"
+          role="radio"
+          aria-checked={period === 'AM'}
+          className={`btn-ampm-tab ${period === 'AM' ? 'active' : ''}`}
+          onClick={() => handlePeriodToggle('AM')}
+        >
+          AM
+        </button>
+        <button
+          type="button"
+          role="radio"
+          aria-checked={period === 'PM'}
+          className={`btn-ampm-tab ${period === 'PM' ? 'active' : ''}`}
+          onClick={() => handlePeriodToggle('PM')}
+        >
+          PM
+        </button>
       </div>
     </div>
   );
