@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useBooking } from '../context/BookingContext';
 import { zodiacData } from '../data/zodiacData';
@@ -9,19 +9,55 @@ import { fetchDailyHoroscope, getFormattedTodayDate } from '../services/astrolog
 export default function ZodiacWidget() {
   const { t, lang } = useLanguage();
   const { openBooking } = useBooking();
-  const [selectedSign, setSelectedSign] = useState(zodiacData[0]);
+
+  // Active selected sign index (0 to 11)
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [radius, setRadius] = useState(270);
+
+  const selectedSign = zodiacData[selectedIndex];
+
   const [guidanceText, setGuidanceText] = useState(
-    zodiacData[0].horoscope[lang] || zodiacData[0].horoscope.en
+    selectedSign.horoscope[lang] || selectedSign.horoscope.en
   );
   const [isLoadingApi, setIsLoadingApi] = useState(false);
   const [todayDate, setTodayDate] = useState('');
-  const [isPaused, setIsPaused] = useState(false);
 
-  const scrollContainerRef = useRef(null);
   const animFrameRef = useRef(null);
+  const dragStartX = useRef(0);
+  const dragStartAngle = useRef(0);
+  const currentAngleRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const isHoveredRef = useRef(false);
 
-  // Triple zodiac dataset (36 items) for endless smooth continuous loop
-  const infiniteZodiacList = [...zodiacData, ...zodiacData, ...zodiacData];
+  // Sync refs with state
+  useEffect(() => {
+    isHoveredRef.current = isHovered;
+  }, [isHovered]);
+
+  useEffect(() => {
+    isDraggingRef.current = isDragging;
+  }, [isDragging]);
+
+  // Adjust 3D cylinder radius on screen resize
+  useEffect(() => {
+    const updateRadius = () => {
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth < 480) {
+          setRadius(165);
+        } else if (window.innerWidth < 768) {
+          setRadius(210);
+        } else {
+          setRadius(275);
+        }
+      }
+    };
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
 
   // Update date on mount & language change
   useEffect(() => {
@@ -45,63 +81,86 @@ export default function ZodiacWidget() {
     };
   }, [selectedSign, lang]);
 
-  // Continuous Auto-Rolling Animation Loop (60 FPS smooth ticker)
+  // Rotate 360° wheel directly to a specific sign index
+  const rotateToIndex = useCallback((index) => {
+    const normIndex = ((index % 12) + 12) % 12;
+    setSelectedIndex(normIndex);
+
+    // Calculate shortest angular distance to target index
+    const targetAngle = -normIndex * 30;
+    const current = currentAngleRef.current;
+    const diff = ((targetAngle - current) % 360 + 540) % 360 - 180;
+    const newAngle = current + diff;
+
+    currentAngleRef.current = newAngle;
+    setRotationAngle(newAngle);
+  }, []);
+
+  // Previous Sign (Step -30° in 360° space)
+  const handlePrevSign = () => {
+    const prevIndex = (selectedIndex - 1 + 12) % 12;
+    rotateToIndex(prevIndex);
+  };
+
+  // Next Sign (Step +30° in 360° space)
+  const handleNextSign = () => {
+    const nextIndex = (selectedIndex + 1) % 12;
+    rotateToIndex(nextIndex);
+  };
+
+  // Drag & Swipe 360° Wheel Handlers
+  const handlePointerDown = (e) => {
+    setIsDragging(true);
+    isDraggingRef.current = true;
+    dragStartX.current = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    dragStartAngle.current = currentAngleRef.current;
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDraggingRef.current) return;
+    const currentX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const deltaX = currentX - dragStartX.current;
+    // Rotate 0.35 degrees per pixel dragged
+    const newAngle = dragStartAngle.current + deltaX * 0.35;
+    currentAngleRef.current = newAngle;
+    setRotationAngle(newAngle);
+  };
+
+  const handlePointerUp = () => {
+    if (!isDraggingRef.current) return;
+    setIsDragging(false);
+    isDraggingRef.current = false;
+
+    // Snap to closest 30-degree sector
+    const currentAngle = currentAngleRef.current;
+    const rawIndex = Math.round(-currentAngle / 30);
+    const snappedIndex = ((rawIndex % 12) + 12) % 12;
+    rotateToIndex(snappedIndex);
+  };
+
+  // Gentle 360° Continuous Idle Auto-Spin
   useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
+    const autoSpin = () => {
+      if (!isDraggingRef.current && !isHoveredRef.current) {
+        currentAngleRef.current -= 0.08; // Graceful 360-degree rotation speed
+        setRotationAngle(currentAngleRef.current);
 
-    // Start in the middle set
-    const singleSetWidth = el.scrollWidth / 3;
-    if (el.scrollLeft === 0) {
-      el.scrollLeft = singleSetWidth;
-    }
-
-    const rollSpeed = 0.65; // Smooth meditative scroll speed
-
-    const roll = () => {
-      if (!isPaused && el) {
-        el.scrollLeft += rollSpeed;
-
-        // Loop seamlessly when passing through sets
-        if (el.scrollLeft >= singleSetWidth * 2) {
-          el.scrollLeft -= singleSetWidth;
-        } else if (el.scrollLeft <= 5) {
-          el.scrollLeft += singleSetWidth;
-        }
+        // Update active sign based on angle
+        const rawIndex = Math.round(-currentAngleRef.current / 30);
+        const normIndex = ((rawIndex % 12) + 12) % 12;
+        setSelectedIndex((prev) => (prev !== normIndex ? normIndex : prev));
       }
-      animFrameRef.current = requestAnimationFrame(roll);
+      animFrameRef.current = requestAnimationFrame(autoSpin);
     };
 
-    animFrameRef.current = requestAnimationFrame(roll);
+    animFrameRef.current = requestAnimationFrame(autoSpin);
 
     return () => {
       if (animFrameRef.current) {
         cancelAnimationFrame(animFrameRef.current);
       }
     };
-  }, [isPaused]);
-
-  // Manual Previous Sign (loops recursively)
-  const handlePrevSign = () => {
-    const currentIndex = zodiacData.findIndex((s) => s.id === selectedSign.id);
-    const prevIndex = (currentIndex - 1 + zodiacData.length) % zodiacData.length;
-    setSelectedSign(zodiacData[prevIndex]);
-
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -220, behavior: 'smooth' });
-    }
-  };
-
-  // Manual Next Sign (loops recursively)
-  const handleNextSign = () => {
-    const currentIndex = zodiacData.findIndex((s) => s.id === selectedSign.id);
-    const nextIndex = (currentIndex + 1) % zodiacData.length;
-    setSelectedSign(zodiacData[nextIndex]);
-
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 220, behavior: 'smooth' });
-    }
-  };
+  }, [rotateToIndex]);
 
   return (
     <section id="horoscope" className="zodiac-section">
@@ -116,58 +175,95 @@ export default function ZodiacWidget() {
           <p className="section-subtitle">{t.zodiac.subtitle}</p>
         </div>
 
-        {/* Continuous Auto-Rolling Carousel in Loop with Side Controls */}
+        {/* 360° Interactive 3D Zodiac Wheel Viewport */}
         <div
-          className="zodiac-carousel-wrapper"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => {
-            // Resume rolling 2 seconds after user finishes touching/swiping
-            setTimeout(() => setIsPaused(false), 2000);
-          }}
+          className="zodiac-360-container"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          <button
-            type="button"
-            className="zodiac-nav-arrow arrow-left"
-            onClick={handlePrevSign}
-            aria-label="Previous zodiac sign"
-            title="Previous Sign"
-          >
-            ❮
-          </button>
-
-          <div
-            className="zodiac-scroll-track continuous-loop-track"
-            ref={scrollContainerRef}
-          >
-            {infiniteZodiacList.map((sign, idx) => {
-              const isSelected = selectedSign.id === sign.id;
-              const signName = sign.names[lang] || sign.names.en;
-
-              return (
-                <button
-                  key={`${sign.id}-${idx}`}
-                  type="button"
-                  onClick={() => setSelectedSign(sign)}
-                  className={`zodiac-tab-pill ${isSelected ? 'active' : ''}`}
-                >
-                  <span className="sign-symbol-pill">{sign.symbol}</span>
-                  <span className="sign-name-pill">{signName}</span>
-                </button>
-              );
-            })}
+          {/* Degree & Rasi Chakra Arc Dial */}
+          <div className="zodiac-360-dial-header">
+            <span className="dial-sparkle">✦</span>
+            <span className="dial-title">360° Rasi Chakra • ராசி சக்கரம்</span>
+            <span className="dial-degree-pill">
+              {((((Math.round(-rotationAngle) % 360) + 360) % 360))}°
+            </span>
           </div>
 
-          <button
-            type="button"
-            className="zodiac-nav-arrow arrow-right"
-            onClick={handleNextSign}
-            aria-label="Next zodiac sign"
-            title="Next Sign"
+          <div
+            className="zodiac-360-viewport"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
           >
-            ❯
-          </button>
+            {/* 360° 3D Revolving Cylinder Wheel */}
+            <div
+              className={`zodiac-360-wheel ${isDragging ? 'dragging' : 'smooth-turn'}`}
+              style={{
+                transform: `rotateY(${rotationAngle}deg)`,
+              }}
+            >
+              {zodiacData.map((sign, idx) => {
+                const isSelected = selectedIndex === idx;
+                const signName = sign.names[lang] || sign.names.en;
+                const cardAngle = idx * 30;
+
+                // Compute relative angle to front camera
+                const relAngle = ((cardAngle + rotationAngle) % 360 + 360) % 360;
+                const isFront = relAngle <= 45 || relAngle >= 315;
+                const isBack = relAngle > 110 && relAngle < 250;
+
+                return (
+                  <div
+                    key={sign.id}
+                    className={`zodiac-360-card ${isSelected ? 'active' : ''} ${
+                      isFront ? 'front' : isBack ? 'back' : 'side'
+                    }`}
+                    style={{
+                      transform: `rotateY(${cardAngle}deg) translateZ(${radius}px)`,
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      rotateToIndex(idx);
+                    }}
+                  >
+                    <div className="card-degree-badge">{idx * 30}° - {(idx + 1) * 30}°</div>
+                    <span className="sign-symbol-360">{sign.symbol}</span>
+                    <span className="sign-name-360">{signName}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Front Stage Glowing Focus Ring Indicator */}
+            <div className="zodiac-360-stage-glow" aria-hidden="true" />
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="zodiac-360-controls">
+            <button
+              type="button"
+              className="zodiac-360-nav-btn arrow-prev"
+              onClick={handlePrevSign}
+              aria-label="Previous zodiac sign"
+              title="Previous Sign (30° Back)"
+            >
+              ❮
+            </button>
+            <div className="zodiac-360-drag-hint">
+              <span>⟵ 360° Drag & Scroll to Rotate Wheel ⟶</span>
+            </div>
+            <button
+              type="button"
+              className="zodiac-360-nav-btn arrow-next"
+              onClick={handleNextSign}
+              aria-label="Next zodiac sign"
+              title="Next Sign (30° Forward)"
+            >
+              ❯
+            </button>
+          </div>
         </div>
 
         {/* Active Sign Prediction Card */}
