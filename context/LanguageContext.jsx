@@ -23,15 +23,18 @@ export function LanguageProvider({ children }) {
     } catch (e) {}
   }, []);
 
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang;
+    }
+  }, [lang]);
+
   const setLanguage = (newLang) => {
     if (['en', 'ta', 'hi'].includes(newLang)) {
       setLang(newLang);
       try {
         localStorage.setItem('astro_preferred_lang', newLang);
       } catch (e) {}
-      if (typeof document !== 'undefined') {
-        document.documentElement.lang = newLang;
-      }
     }
   };
 

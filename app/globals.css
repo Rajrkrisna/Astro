@@ -3035,7 +3035,104 @@ button {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Language Specific Typography Scaling: Tamil (தமிழ்) & Hindi (हिन्दी)
+   ========================================================================== */
+
+html[lang="ta"] {
+  --font-sans: 'Noto Sans Tamil', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  letter-spacing: 0;
+}
+
+html[lang="ta"] body {
+  line-height: 1.75;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+html[lang="ta"] .hero-main-title {
+  font-size: 2.25rem;
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+
+html[lang="ta"] .section-title {
+  font-size: 1.85rem;
+  line-height: 1.38;
+}
+
+html[lang="ta"] .brand-main {
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+html[lang="ta"] .portrait-name {
+  font-size: 1.55rem;
+  line-height: 1.35;
+}
+
+html[lang="ta"] .active-sign-title {
+  font-size: 1.65rem;
+  line-height: 1.35;
+}
+
+html[lang="ta"] .service-card-title {
+  font-size: 1.12rem;
+  line-height: 1.45;
+}
+
+html[lang="ta"] .focus-card-title {
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+html[lang="ta"] .home-booking-cta-title {
+  font-size: 1.75rem;
+  line-height: 1.38;
+}
+
+html[lang="ta"] .booking-drawer-title {
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+html[lang="ta"] .btn-primary-glow,
+html[lang="ta"] .btn-secondary-glass,
+html[lang="ta"] .btn-whatsapp-hero,
+html[lang="ta"] .btn-submit-booking-centered,
+html[lang="ta"] .btn-drawer-booking-submit,
+html[lang="ta"] .btn-home-booking-primary,
+html[lang="ta"] .btn-about-book {
+  font-size: 0.94rem;
+  padding: 0.85rem 1.6rem;
+  line-height: 1.4;
+}
+
+html[lang="ta"] .hero-tagline,
+html[lang="ta"] .bio-p,
+html[lang="ta"] .service-card-desc,
+html[lang="ta"] .focus-card-desc,
+html[lang="ta"] .guidance-text,
+html[lang="ta"] .home-booking-cta-subtitle {
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+html[lang="hi"] {
+  --font-sans: 'Noto Sans Devanagari', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+html[lang="hi"] .hero-main-title {
+  font-size: 2.35rem;
+  line-height: 1.35;
+}
+
+html[lang="hi"] .section-title {
+  font-size: 1.95rem;
+  line-height: 1.38;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for All Screen Sizes & Mobile Browsers
    ========================================================================== */
 
 @media (max-width: 1024px) {
@@ -3048,7 +3145,11 @@ button {
   }
 
   .hero-main-title {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
+  }
+
+  html[lang="ta"] .hero-main-title {
+    font-size: 2rem;
   }
 
   .about-layout-grid {
@@ -3074,75 +3175,261 @@ button {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .section-container {
+    padding: 0 1.15rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  html[lang="ta"] .section-title {
+    font-size: 1.45rem;
+    line-height: 1.38;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 3.5rem 0 2.5rem 0;
+  }
+
   .hero-main-title {
-    font-size: 2.1rem;
-  }
-
-  html[lang="ta"] .hero-main-title,
-  html[lang="hi"] .hero-main-title {
     font-size: 1.95rem;
+    line-height: 1.28;
+    margin-bottom: 1rem;
   }
 
-  .booking-form-wrapper-centered {
-    padding: 1.75rem 1.25rem;
+  html[lang="ta"] .hero-main-title {
+    font-size: 1.5rem;
+    line-height: 1.35;
+  }
+
+  html[lang="hi"] .hero-main-title {
+    font-size: 1.65rem;
+    line-height: 1.35;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+  }
+
+  html[lang="ta"] .hero-tagline {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .astrologer-badge-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.15rem;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .astrologer-meta {
+    text-align: center;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary-glow,
+  .btn-secondary-glass,
+  .btn-whatsapp-hero {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.98rem;
+  }
+
+  html[lang="ta"] .btn-primary-glow,
+  html[lang="ta"] .btn-secondary-glass,
+  html[lang="ta"] .btn-whatsapp-hero {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
   }
 
   .hero-stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 0.5rem;
   }
 
+  .stat-card {
+    padding: 1.15rem 0.75rem;
+  }
+
+  .stat-number {
+    font-size: 1.85rem;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+  }
+
+  /* Section Spacing */
+  .zodiac-section,
+  .services-section,
+  .about-section,
+  .focus-section,
+  .testimonials-section,
+  .faq-section,
+  .home-booking-cta-section,
+  .booking-section-centered,
+  .newsletter-section {
+    padding: 3.5rem 0;
+  }
+
+  /* Zodiac Section */
+  .zodiac-display-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .zodiac-card-header {
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .sign-icon-large-box {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: var(--radius-md);
+  }
+
+  .sign-symbol-huge {
+    font-size: 2.25rem;
+  }
+
+  .active-sign-title {
+    font-size: 1.5rem;
+  }
+
+  html[lang="ta"] .active-sign-title {
+    font-size: 1.28rem;
+  }
+
+  .guidance-text {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .zodiac-card-footer {
+    justify-content: center;
+  }
+
+  .btn-kundli-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* About Section */
+  .astrologer-portrait-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .astrology-yantra-visual {
+    width: 130px;
+    height: 130px;
+  }
+
+  .yantra-circle.outer {
+    width: 106px;
+    height: 106px;
+  }
+
+  .yantra-circle.middle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .yantra-center-symbol {
+    font-size: 2.75rem;
+  }
+
+  .portrait-name {
+    font-size: 1.55rem;
+  }
+
+  html[lang="ta"] .portrait-name {
+    font-size: 1.35rem;
+  }
+
+  .portrait-degree {
+    font-size: 1rem;
+  }
+
+  .specialties-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .about-cta-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .btn-about-book,
+  .btn-about-maps,
+  .btn-about-wa {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem 1.25rem;
+  }
+
+  /* Grids to 1 Column */
   .services-cards-grid,
   .focus-areas-grid,
   .testimonials-cards-grid,
   .contact-details-grid,
   .trust-grid-centered {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
-  .direct-wa-booking-box-centered {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+  .service-card-premium,
+  .focus-card-glass,
+  .testimonial-card-glass {
+    padding: 1.65rem 1.25rem;
   }
 
-  .form-row-2,
-  .form-row-3 {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .whatsapp-label {
-    display: none;
-  }
-
-  .whatsapp-float-btn {
-    padding: 0.85rem;
-  }
-
-  .zodiac-nav-arrow {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    font-size: 1rem;
-  }
-
-  .zodiac-tab-pill {
-    min-width: 120px;
-    padding: 0.75rem 0.9rem;
-  }
-
-  .sign-symbol-pill {
-    font-size: 1.5rem;
-  }
-
+  /* Google Reviews Header Card */
   .google-reviews-header-card {
     flex-direction: column;
     padding: 1rem 1.25rem;
     border-radius: var(--radius-lg);
     gap: 0.85rem;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
   }
 
   .google-rating-info {
@@ -3152,5 +3439,218 @@ button {
   .btn-google-read-all {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Home Booking CTA */
+  .home-booking-cta-card {
+    padding: 2.25rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .home-booking-cta-title {
+    font-size: 1.65rem;
+  }
+
+  html[lang="ta"] .home-booking-cta-title {
+    font-size: 1.35rem;
+  }
+
+  .home-booking-cta-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .btn-home-booking-primary,
+  .btn-home-booking-wa {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+  }
+
+  /* Direct WhatsApp Banner */
+  .direct-wa-booking-box-centered {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 1.5rem 1.15rem;
+    gap: 1rem;
+  }
+
+  .btn-wa-centered-action {
+    width: 100%;
+  }
+
+  /* Booking Form */
+  .booking-form-wrapper-centered {
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .birth-details-subgroup {
+    padding: 1.15rem 0.85rem;
+  }
+
+  .form-row-2,
+  .form-row-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .btn-submit-booking-centered {
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    font-size: 1.02rem;
+  }
+
+  html[lang="ta"] .btn-submit-booking-centered {
+    font-size: 0.92rem;
+    padding: 0.85rem 1.2rem;
+  }
+
+  /* Slide-Over Side Drawer on Mobile */
+  .booking-side-drawer {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .booking-drawer-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .booking-drawer-body {
+    padding: 1.25rem 1rem;
+  }
+
+  .drawer-form-row,
+  .drawer-form-row-3 {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  /* Newsletter */
+  .newsletter-card-glow {
+    padding: 2.25rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .newsletter-title {
+    font-size: 1.6rem;
+  }
+
+  .newsletter-form-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .newsletter-input,
+  .btn-newsletter-submit {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer-celestial {
+    padding: 3.5rem 0 2rem 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  /* Floating WhatsApp Button on Mobile */
+  .whatsapp-float-container {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .whatsapp-label {
+    display: none;
+  }
+
+  .whatsapp-float-btn {
+    padding: 0.75rem 0.95rem;
+    font-size: 0.88rem;
+  }
+
+  .whatsapp-icon {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container {
+    padding: 0 0.85rem;
+  }
+
+  .hero-main-title {
+    font-size: 1.7rem;
+  }
+
+  html[lang="ta"] .hero-main-title {
+    font-size: 1.35rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  html[lang="ta"] .section-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .stat-card {
+    padding: 0.95rem 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.55rem;
+  }
+
+  .stat-label {
+    font-size: 0.76rem;
+  }
+
+  .zodiac-nav-arrow {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 0.9rem;
+  }
+
+  .zodiac-tab-pill {
+    min-width: 105px;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .sign-symbol-pill {
+    font-size: 1.35rem;
+  }
+
+  .sign-name-pill {
+    font-size: 0.8rem;
+  }
+
+  .booking-drawer-title {
+    font-size: 1.05rem;
+  }
+
+  .brand-main {
+    font-size: 0.95rem;
+  }
+
+  .brand-sub {
+    font-size: 0.68rem;
+  }
+
+  .logo-emblem {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
   }
 }
