@@ -304,6 +304,12 @@ button {
   font-weight: 700;
   color: var(--gold-900);
   transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lang-name {
+  white-space: nowrap;
 }
 
 .lang-select-btn:hover {
