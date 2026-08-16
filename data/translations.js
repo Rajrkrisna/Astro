@@ -158,7 +158,7 @@ export const translations = {
         },
         {
           q: 'Can I consult in my native language?',
-          a: 'Yes! Consultations are personally conducted in Tamil, English, and Hindi according to your preference.',
+          a: 'Yes! Consultations are personally conducted in Tamil, Indian English, and Hindi according to your preference.',
         },
       ],
     },
@@ -367,7 +367,7 @@ export const translations = {
         },
         {
           q: 'எந்த மொழிகளில் ஆலோசனை பெறலாம்?',
-          a: 'தமிழ், ஆங்கிலம் மற்றும் இந்தி மொழிகளில் ஆலோசனை பெறலாம்.',
+          a: 'தமிழ், இந்திய ஆங்கிலம் (Indian English) மற்றும் இந்தி மொழிகளில் ஆலோசனை பெறலாம்.',
         },
       ],
     },
@@ -576,7 +576,7 @@ export const translations = {
         },
         {
           q: 'परामर्श किस भाषा में उपलब्ध है?',
-          a: 'परामर्श हिन्दी, तमिल और अंग्रेजी में व्यक्तिगत रूप से उपलब्ध है।',
+          a: 'परामर्श हिन्दी, तमिल और इंडियन इंग्लिश (Indian English) में व्यक्तिगत रूप से उपलब्ध है।',
         },
       ],
     },

@@ -6,7 +6,7 @@ import { translations } from '../data/translations';
 const LanguageContext = createContext();
 
 export const languages = [
-  { code: 'en', label: 'English', nativeName: 'English', flag: '🇬🇧' },
+  { code: 'en', label: 'Indian English', nativeName: 'Indian English', flag: '🇮🇳' },
   { code: 'ta', label: 'Tamil', nativeName: 'தமிழ்', flag: '🇮🇳' },
   { code: 'hi', label: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
 ];

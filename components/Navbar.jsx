@@ -154,7 +154,7 @@ export default function Navbar() {
             className="btn-nav-cta"
             aria-label="Book Consultation"
           >
-            <span className="btn-cta-icon">📅</span>
+            <span className="btn-cta-icon">✦</span>
             <span className="btn-cta-text btn-cta-text-desktop">{t.nav.bookNow}</span>
             <span className="btn-cta-text btn-cta-text-mobile">
               {lang === 'ta' ? 'முன்பதிவு' : lang === 'hi' ? 'बुकिंग' : 'Book'}
@@ -231,7 +231,7 @@ export default function Navbar() {
                   openBooking('birth-chart');
                 }}
               >
-                <span>📅</span> {t.nav.bookNow}
+                <span>✦</span> {t.nav.bookNow}
               </button>
               <Link href="/#services" onClick={() => setMobileMenuOpen(false)}>
                 <span>🔯</span> {t.nav.services}

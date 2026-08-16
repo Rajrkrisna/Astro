@@ -65,7 +65,7 @@ export default function WhatsAppFloat() {
           onClick={() => openBooking('birth-chart')}
           className="mobile-bar-btn mobile-bar-book"
         >
-          <span className="bar-icon">📅</span>
+          <span className="bar-icon">✦</span>
           <span className="bar-label">{getBookText()}</span>
         </button>
 
