@@ -272,7 +272,7 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
                   required
                 >
                   <option value="Tamil">தமிழ் (Tamil)</option>
-                  <option value="Indian English">Indian English</option>
+                  <option value="English">English</option>
                   <option value="Hindi">हिन्दी (Hindi)</option>
                 </select>
               </div>
