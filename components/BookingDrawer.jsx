@@ -22,14 +22,10 @@ export default function BookingDrawer() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [serviceHighlighted, setServiceHighlighted] = useState(false);
 
   useEffect(() => {
     if (activeService) {
       setFormData((prev) => ({ ...prev, service: activeService }));
-      setServiceHighlighted(true);
-      const timer = setTimeout(() => setServiceHighlighted(false), 2000);
-      return () => clearTimeout(timer);
     }
   }, [activeService, isOpen]);
 
@@ -231,19 +227,13 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
                   />
                 </div>
 
-                <div className={`form-field ${serviceHighlighted ? 'service-field-highlighted' : ''}`}>
-                  <label htmlFor="drawer-service" className="label-with-badge">
-                    <span>{t.booking.serviceLabel}</span>
-                    {serviceHighlighted && (
-                      <span className="auto-selected-badge">✨ Selected</span>
-                    )}
-                  </label>
+                <div className="form-field">
+                  <label htmlFor="drawer-service">{t.booking.serviceLabel}</label>
                   <select
                     id="drawer-service"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className={serviceHighlighted ? 'select-highlight' : ''}
                     required
                   >
                     {t.services.items.map((s) => (

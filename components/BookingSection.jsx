@@ -19,14 +19,10 @@ export default function BookingSection({ initialService, isDedicatedPage = true 
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [serviceHighlighted, setServiceHighlighted] = useState(Boolean(initialService));
 
   useEffect(() => {
     if (initialService) {
       setFormData((prev) => ({ ...prev, service: initialService }));
-      setServiceHighlighted(true);
-      const timer = setTimeout(() => setServiceHighlighted(false), 2500);
-      return () => clearTimeout(timer);
     }
   }, [initialService]);
 
@@ -199,19 +195,13 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
                   />
                 </div>
 
-                <div className={`form-field ${serviceHighlighted ? 'service-field-highlighted' : ''}`}>
-                  <label htmlFor="service" className="label-with-badge">
-                    <span>{t.booking.serviceLabel}</span>
-                    {serviceHighlighted && (
-                      <span className="auto-selected-badge">✨ Selected</span>
-                    )}
-                  </label>
+                <div className="form-field">
+                  <label htmlFor="service">{t.booking.serviceLabel}</label>
                   <select
                     id="service"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className={serviceHighlighted ? 'select-highlight' : ''}
                     required
                   >
                     {t.services.items.map((s) => (

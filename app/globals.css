@@ -2151,27 +2151,6 @@ button {
   width: 100%;
 }
 
-.label-with-badge {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.auto-selected-badge {
-  font-size: 0.76rem;
-  background: var(--gold-500);
-  color: #ffffff;
-  padding: 0.15rem 0.6rem;
-  border-radius: 9999px;
-  font-weight: 800;
-  animation: pulseGoldBadge 1s infinite alternate;
-}
-
-@keyframes pulseGoldBadge {
-  from { transform: scale(0.95); opacity: 0.85; }
-  to { transform: scale(1.05); opacity: 1; }
-}
-
 .form-field label {
   font-size: 0.9rem;
   font-weight: 700;
@@ -2199,12 +2178,6 @@ button {
   max-height: 240px;
   resize: vertical;
   line-height: 1.6;
-}
-
-.select-highlight {
-  border-color: var(--gold-500) !important;
-  background: var(--gold-50) !important;
-  box-shadow: 0 0 0 3.5px rgba(245, 158, 11, 0.35) !important;
 }
 
 .form-field select option {
