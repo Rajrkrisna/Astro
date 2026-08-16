@@ -254,7 +254,7 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
                   <span>🌟 {getBirthDetailsTitle()}</span>
                 </div>
 
-                <div className="drawer-form-row-3">
+                <div className="drawer-form-row">
                   <div className="form-field">
                     <label htmlFor="drawer-dob">{t.booking.dobLabel}</label>
                     <input
@@ -277,19 +277,19 @@ _Sent from Sri Arunachaleswara Astrology Website_`;
                       onChange={handleChange}
                     />
                   </div>
+                </div>
 
-                  <div className="form-field">
-                    <label htmlFor="drawer-pob">{t.booking.pobLabel}</label>
-                    <input
-                      type="text"
-                      id="drawer-pob"
-                      name="pob"
-                      value={formData.pob}
-                      onChange={handleChange}
-                      placeholder={t.booking.pobPlaceholder}
-                      required
-                    />
-                  </div>
+                <div className="form-field birth-pob-field">
+                  <label htmlFor="drawer-pob">{t.booking.pobLabel}</label>
+                  <input
+                    type="text"
+                    id="drawer-pob"
+                    name="pob"
+                    value={formData.pob}
+                    onChange={handleChange}
+                    placeholder={t.booking.pobPlaceholder}
+                    required
+                  />
                 </div>
               </div>
 
