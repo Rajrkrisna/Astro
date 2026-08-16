@@ -889,21 +889,23 @@ button {
 .zodiac-scroll-track {
   display: flex;
   gap: 0.75rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  overflow-x: scroll;
+  scroll-behavior: auto;
   padding: 0.5rem 0.25rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold-400) transparent;
+  scrollbar-width: none; /* Hide scrollbar for clean rolling */
+  -ms-overflow-style: none;
   flex: 1;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+
+.zodiac-scroll-track:active {
+  cursor: grabbing;
 }
 
 .zodiac-scroll-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.zodiac-scroll-track::-webkit-scrollbar-thumb {
-  background: var(--gold-300);
-  border-radius: 9999px;
+  display: none;
 }
 
 .zodiac-nav-arrow {

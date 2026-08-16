@@ -15,12 +15,12 @@ export default function ZodiacWidget() {
   );
   const [isLoadingApi, setIsLoadingApi] = useState(false);
   const [todayDate, setTodayDate] = useState('');
+  const [isPaused, setIsPaused] = useState(false);
 
   const scrollContainerRef = useRef(null);
-  const activeTabRef = useRef(null);
-  const isAutoScrolling = useRef(false);
+  const animFrameRef = useRef(null);
 
-  // Triple zodiac dataset for seamless infinite / recursive horizontal scrolling
+  // Triple zodiac dataset (36 items) for endless smooth continuous loop
   const infiniteZodiacList = [...zodiacData, ...zodiacData, ...zodiacData];
 
   // Update date on mount & language change
@@ -45,49 +45,62 @@ export default function ZodiacWidget() {
     };
   }, [selectedSign, lang]);
 
-  // Center active tab smoothly whenever selectedSign changes
+  // Continuous Auto-Rolling Animation Loop (60 FPS smooth ticker)
   useEffect(() => {
-    if (activeTabRef.current && scrollContainerRef.current) {
-      isAutoScrolling.current = true;
-      activeTabRef.current.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
-      });
-
-      const timer = setTimeout(() => {
-        isAutoScrolling.current = false;
-      }, 400);
-
-      return () => clearTimeout(timer);
-    }
-  }, [selectedSign]);
-
-  // Infinite scroll boundary wrapper
-  const handleScroll = () => {
     const el = scrollContainerRef.current;
-    if (!el || isAutoScrolling.current) return;
+    if (!el) return;
 
+    // Start in the middle set
     const singleSetWidth = el.scrollWidth / 3;
-    if (el.scrollLeft <= 10) {
-      el.scrollLeft += singleSetWidth;
-    } else if (el.scrollLeft >= singleSetWidth * 2 - 10) {
-      el.scrollLeft -= singleSetWidth;
+    if (el.scrollLeft === 0) {
+      el.scrollLeft = singleSetWidth;
     }
-  };
 
-  // Recursive Previous Arrow
+    const rollSpeed = 0.65; // Smooth meditative scroll speed
+
+    const roll = () => {
+      if (!isPaused && el) {
+        el.scrollLeft += rollSpeed;
+
+        // Loop seamlessly when passing through sets
+        if (el.scrollLeft >= singleSetWidth * 2) {
+          el.scrollLeft -= singleSetWidth;
+        } else if (el.scrollLeft <= 5) {
+          el.scrollLeft += singleSetWidth;
+        }
+      }
+      animFrameRef.current = requestAnimationFrame(roll);
+    };
+
+    animFrameRef.current = requestAnimationFrame(roll);
+
+    return () => {
+      if (animFrameRef.current) {
+        cancelAnimationFrame(animFrameRef.current);
+      }
+    };
+  }, [isPaused]);
+
+  // Manual Previous Sign (loops recursively)
   const handlePrevSign = () => {
     const currentIndex = zodiacData.findIndex((s) => s.id === selectedSign.id);
     const prevIndex = (currentIndex - 1 + zodiacData.length) % zodiacData.length;
     setSelectedSign(zodiacData[prevIndex]);
+
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -220, behavior: 'smooth' });
+    }
   };
 
-  // Recursive Next Arrow
+  // Manual Next Sign (loops recursively)
   const handleNextSign = () => {
     const currentIndex = zodiacData.findIndex((s) => s.id === selectedSign.id);
     const nextIndex = (currentIndex + 1) % zodiacData.length;
     setSelectedSign(zodiacData[nextIndex]);
+
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 220, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -103,8 +116,17 @@ export default function ZodiacWidget() {
           <p className="section-subtitle">{t.zodiac.subtitle}</p>
         </div>
 
-        {/* Recursive Carousel with Side Navigation Arrows */}
-        <div className="zodiac-carousel-wrapper">
+        {/* Continuous Auto-Rolling Carousel in Loop with Side Controls */}
+        <div
+          className="zodiac-carousel-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => {
+            // Resume rolling 2 seconds after user finishes touching/swiping
+            setTimeout(() => setIsPaused(false), 2000);
+          }}
+        >
           <button
             type="button"
             className="zodiac-nav-arrow arrow-left"
@@ -116,20 +138,17 @@ export default function ZodiacWidget() {
           </button>
 
           <div
-            className="zodiac-scroll-track"
+            className="zodiac-scroll-track continuous-loop-track"
             ref={scrollContainerRef}
-            onScroll={handleScroll}
           >
             {infiniteZodiacList.map((sign, idx) => {
               const isSelected = selectedSign.id === sign.id;
               const signName = sign.names[lang] || sign.names.en;
-              // Attach ref to the middle set's active item for clean centering
-              const isMiddleSetActive = isSelected && idx >= 12 && idx < 24;
 
               return (
                 <button
                   key={`${sign.id}-${idx}`}
-                  ref={isMiddleSetActive ? activeTabRef : null}
+                  type="button"
                   onClick={() => setSelectedSign(sign)}
                   className={`zodiac-tab-pill ${isSelected ? 'active' : ''}`}
                 >
