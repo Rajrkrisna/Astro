@@ -56,7 +56,7 @@ export const translations = {
         {
           id: 'palm-leaf',
           icon: '🌿',
-          title: 'Palm Leaf Reading (Nadi Astrology)',
+          title: 'Palm Leaf Reading',
           description: 'Authentic decoding of sacred Palm Leaf manuscripts written by ancient Sages (Agathiyar, Shiva, Sukhar). Using your thumbprint, discover your past life karmas, life chapters (Kandams), and destined roadmap.',
           highlights: ['25+ Years Palm Leaf Mastery', 'Thumbprint Search & Leaf Identification', 'Karmic Relief & Vaitheeswaran Pariharams'],
         },
@@ -89,11 +89,11 @@ export const translations = {
           highlights: ['Residential & Commercial Vastu', 'Energy Flow Optimization', 'Non-Destructive Remedies'],
         },
         {
-          id: 'nadi-prasanam',
+          id: 'jamakkol-prasanam',
           icon: '🎯',
-          title: 'Nadi Astrology & Jamakkol Prasanam',
-          description: 'Ancient predictive methodology and instant horary (Prasanam) techniques to answer specific urgent life questions with pinpoint precision.',
-          highlights: ['Instant Question Solutions', 'Karma & Past Life Influences', 'Specific Event Predictions'],
+          title: 'Jamakkol Prasanam (Horary Astrology)',
+          description: 'Ancient predictive methodology and instant horary (Prasanam) calculations to answer specific urgent life questions with pinpoint precision.',
+          highlights: ['Instant Question Solutions', 'Time-Based Event Prediction', 'Clarity on Critical Decisions'],
         },
         {
           id: 'remedies',
@@ -276,7 +276,7 @@ export const translations = {
         {
           id: 'palm-leaf',
           icon: '🌿',
-          title: 'பாரம்பரிய ஓலைச்சுவடி நாடி ஜோதிடம்',
+          title: 'பாரம்பரிய ஓலைச்சுவடி வாசிப்பு',
           description: 'அகத்தியர், சிவ மற்றும் சுகர் அருளிய பழங்கால ஓலைச்சுவடிகள் மூலம் கைரேகை கொண்டு முற்பிறவி கர்ம வினைகள், தற்போதைய தடைகள், எதிர்கால யோகங்கள் மற்றும் விசேஷ பரிகாரங்களை துல்லியமாக அறியும் முறை.',
           highlights: ['25+ வருட ஓலைச்சுவடி வாசிப்பு அனுபவம்', 'கைரேகை மூலம் சுவடி கண்டறிதல்', 'காண்டங்கள் & பூர்வ கர்ம பரிகாரங்கள்'],
         },
@@ -309,11 +309,11 @@ export const translations = {
           highlights: ['வீட்டு மற்றும் வணிக வாஸ்து', 'நேர்மறை ஆற்றல் மேம்பாடு', 'எளிய வாஸ்து பரிகாரங்கள்'],
         },
         {
-          id: 'nadi-prasanam',
+          id: 'jamakkol-prasanam',
           icon: '🎯',
-          title: 'நாடி ஜோதிடம் & ஜாமக்கோள் பிரசன்னம்',
+          title: 'ஜாமக்கோள் பிரசன்னம்',
           description: 'உடனடி பிரச்சினைகளுக்கும் சிக்கல்களுக்கும் துல்லியமான விடை தரும் பாரம்பரிய பிரசன்ன கணித முறை.',
-          highlights: ['உடனடி கேள்விக்கான தீர்வுகள்', 'கர்ம வினைகள் & பரிகாரங்கள்', 'துல்லிய கால கணிப்பு'],
+          highlights: ['உடனடி கேள்விக்கான தீர்வுகள்', 'காரிய வெற்றி வாய்ப்புகள்', 'துல்லிய கால கணிப்பு'],
         },
         {
           id: 'remedies',
@@ -496,7 +496,7 @@ export const translations = {
         {
           id: 'palm-leaf',
           icon: '🌿',
-          title: 'प्राचीन ताड़पत्र (नाड़ी) ज्योतिष वाचन',
+          title: 'प्राचीन ताड़पत्र वाचन',
           description: 'महर्षि अगस्त्य एवं प्राचीन ऋषियों द्वारा लिखित ताड़पत्र (नाड़ी) पोथियों से अंगूठे के निशान द्वारा पूर्व जन्म के कर्म, वर्तमान जीवन के 12 काण्ड एवं भविष्यफल का प्रामाणिक वाचन।',
           highlights: ['25+ वर्षों का ताड़पत्र वाचन अनुभव', 'अंगूठे के निशान से पोथी की पहचान', 'कर्म दोष निवारण एवं सिद्ध परिहार'],
         },
@@ -529,11 +529,11 @@ export const translations = {
           highlights: ['गृह एवं व्यवसाय वास्तु', 'सकारात्मक ऊर्जा प्रवाह', 'सुलभ वास्तु उपाय'],
         },
         {
-          id: 'nadi-prasanam',
+          id: 'jamakkol-prasanam',
           icon: '🎯',
-          title: 'नाड़ी ज्योतिष एवं जामाक्कोल प्रसन्नम',
+          title: 'जामाक्कोल प्रसन्नम (प्रश्न ज्योतिष)',
           description: 'तात्कालिक एवं गंभीर प्रश्नों के सटीक उत्तर हेतु प्राचीन प्रश्न ज्योतिष पद्धति।',
-          highlights: ['तात्कालिक प्रश्न समाधान', 'कर्म फल एवं निदान', 'सटीक समय गणना'],
+          highlights: ['तात्कालिक प्रश्न समाधान', 'सटीक समय गणना', 'कार्य सिद्धि मार्गदर्शन'],
         },
         {
           id: 'remedies',
